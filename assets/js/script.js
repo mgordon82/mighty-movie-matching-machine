@@ -2,7 +2,7 @@ const omdbKey = 'f1744d2a';
 const watchModeApiKey = 'u5P8vBevWv4TKhoIoGy7N3kSgvfsLW5OmPNNunDA';
 const movieUpdate = document.getElementById('test');
 
-let data = {};
+let movieData = {};
 
 function getSearchResults(title) {
   fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&s=${title}`)
@@ -57,11 +57,11 @@ function getStreamingService(id) {
       return response.json();
     })
     .then(function (data) {
-      data = data;
+      movieData = data;
+      console.log('movie data', movieData);
     });
 }
 
 getSearchResults('Endgame');
 exactSearchResults('tt4154796');
 getMovieId('Avengers: Endgame');
-console.log('data', data);
