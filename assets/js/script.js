@@ -1,36 +1,31 @@
 const omdbKey = 'f1744d2a';
-// const baseURL = `http://www.omdbapi.com/?apikey=${omdbKey}&s=endgame`;
+const watchModeApiKey = 'u5P8vBevWv4TKhoIoGy7N3kSgvfsLW5OmPNNunDA';
 const movieUpdate = document.getElementById('test');
-// const searchInput = document.getElementById('input id here').value
+
+let data = {};
 
 function getSearchResults(title) {
-    fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&s=${title}`)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            console.log(data.Search[0]);
-        });
+  fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&s=${title}`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      console.log(data.Search[0]);
+    });
 }
 
 function exactSearchResults(exactTitle) {
-    fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&i=${exactTitle}`)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            console.log(data.Title);
-            movieUpdate.textContent = data.Title;
-        });
+  fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&i=${exactTitle}`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      console.log(data.Title);
+      // movieUpdate.textContent = data.Title;
+    });
 }
-
-getSearchResults('Endgame');
-exactSearchResults('tt4154796');
-const watchModeApiKey = 'u5P8vBevWv4TKhoIoGy7N3kSgvfsLW5OmPNNunDA';
-
-let data = {};
 
 function getMovieId(value) {
   fetch(
@@ -66,5 +61,7 @@ function getStreamingService(id) {
     });
 }
 
+getSearchResults('Endgame');
+exactSearchResults('tt4154796');
 getMovieId('Avengers: Endgame');
 console.log('data', data);
