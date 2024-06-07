@@ -1,0 +1,32 @@
+body {
+    background: linear-gradient(to bottom, #363636, #f0f0f0);
+  }
+  
+  .up-next-container {
+    background-color: #3498db; 
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .up-next-container .title {
+    color: #ffffff; 
+  }
+  
+  .box {
+    background-color: #ffffff; 
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .box .title {
+    color: #000000; 
+  }
+  
+  #favorites {
+    background-color: hsl(348, 100%, 63%)  !important;
+  }
+  
+  .has-background-danger .title {
+    color: #ffffff; 
+  }
+  

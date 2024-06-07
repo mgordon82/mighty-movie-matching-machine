@@ -9,39 +9,99 @@
   </head>
   <body>
     <header>
-      <section class="section">
-        <h1 class="title">Mighty Movie Matching Machine (4M)</h1>
-        <input type="text" class="search-bar" placeholder="Match a Movie..."/>
+      <section class="hero is-small is-dark">
+        <div class="hero-body">
+          <div class="columns is-vcentered">
+            <div class="column">
+              <p class="title">Mighty Movie Matching Machine (4M)</p>
+            </div>
+            <div class="column is-narrow">
+              <div class="field has-addons">
+                <div class="control">
+                  <input id="search-bar" class="input" type="text" placeholder="Match a movie..." />
+                </div>
+                <div class="control">
+                  <button id="search-button" class="button has-text-light is-info">Search</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </header>
-      <main class="container">
-        <section id="up-next">
-          <h2>Up Next</h2>
-          <ul class="card-list">
-            <li class="card">Movie 1</li>
-            <li class="card">Movie 2</li>
-            <li class="card">Movie 3</li>
-            <li class="card">Movie 4</li>
-            <li class="card">Movie 5</li>
-          </ul>
-        </section>
-        <section id="favorites">
-          <h2>Your Favorites</h2>
-          <ul class="card-list">
-            <li class="card">Favorite 1</li>
-            <li class="card">Favorite 2</li>
-            <li class="card">Favorite 3</li>
-          </ul>
-        </section>
-        <section id="watch-history">
-          <h2>Watch History</h2>
-          <ul class="card-list">
-            <li class="card">History 1</li>
-            <li class="card">History 2</li>
-            <li class="card">History 3</li>
-          </ul>
-
-        </section>
-      </main>
+    <main>
+      <section id="up-next" class="section">
+        <div class="container up-next-container">
+          <h2 class="title is-4 has-text-white">Up Next</h2>
+          <div class="columns is-multiline">
+            <div class="column is-one-fifth">
+              <div class="card has-background-info">
+                <!-- cards are name move-card1 etc -->
+                <div class="card-content movie-card1">
+                  <p class="title is-5 has-text-light">Movie 1</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-fifth">
+              <div class="card has-background-info">
+                <div class="card-content movie-card2">
+                  <p class="title is-5 has-text-light">Movie 2</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-fifth">
+              <div class="card has-background-info">
+                <div class="card-content movie-card3">
+                  <p class="title is-5 has-text-light">Movie 3</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-fifth">
+              <div class="card has-background-info">
+                <div class="card-content movie-card4">
+                  <p class="title is-5 has-text-light">Movie 4</p>
+                </div>
+              </div>
+            </div>
+            <div class="column is-one-fifth">
+              <div class="card has-background-info">
+                <div class="card-content movie-card5">
+                  <p class="title is-5 has-text-light">Movie 5</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="columns">
+            <div class="column">
+              <section id="favorites" class="box has-text-centered has-background-danger">
+                <h2 class="title is-4 has-text-white">Your Favorites</h2>
+                <ul class="card-list">
+                  <!-- I called tehse favorite-card#, so target card with class = favorite-card1 etc -->
+                  <li class="card favorite-card1 has-text-light has-background-danger">Favorite 1</li>
+                  <li class="card favorite-card2 has-text-light has-background-danger">Favorite 2</li>
+                  <li class="card favorite-card3 has-text-light has-background-danger">Favorite 3</li>
+                </ul>
+              </section>
+            </div>
+            <div class="column">
+              <section id="watch-history" class="box has-text-centered has-background-grey-dark">
+                <h2 class="title is-4 has-text-light">Watch History</h2>
+                <ul class="card-list">
+                  <!-- I called these history-card#, so target card with class = history-card1 etc -->
+                  <li class="card history-card1 has-background-dark has-text-light">History 1</li>
+                  <li class="card history-card2 has-background-dark has-text-light">History 2</li>
+                  <li class="card history-card3 has-background-dark has-text-light">History 3</li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
