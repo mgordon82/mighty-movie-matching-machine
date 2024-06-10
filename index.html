@@ -21,7 +21,10 @@
                   <input id="search-bar" class="input" type="text" placeholder="Match a movie..." />
                 </div>
                 <div class="control">
-                  <button id="search-button" class="button has-text-light is-info">Search</button>
+                  <!--<button id="search-button" class="button has-text-light is-info">Search</button>-->
+                  <button class="js-modal-trigger" data-target="modal-js-search">
+                    Search
+                  </button>
                 </div>
               </div>
             </div>
@@ -103,5 +106,17 @@
       </section>
     </main>
     <script src="assets/js/script.js"></script>
+    <div id="modal-js-search" class="modal">
+      <div class="modal-background"></div>
+    
+      <div class="modal-content">
+        <div class="box">
+          <p>Your Matches... </p>
+          <!-- Your content -->
+        </div>
+      </div>
+    
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
   </body>
 </html>
