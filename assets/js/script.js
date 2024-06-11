@@ -127,6 +127,64 @@ function displaySearchResults(results) {
 // modal functionality
 
 document.addEventListener('DOMContentLoaded', () => {
+  const chuckNorrisDialog = document.getElementById('chuckNorrisDialog');
+  const jokeDisplay = document.getElementById('jokeDisplay');
+
+  // Konami code, duh
+  const konamiCode = [
+    'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+    'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'
+  ];
+  let konamiCodePosition = 0;
+
+  // Function to open the dialog
+  function openDialog() {
+    chuckNorrisDialog.style.display = 'flex';
+  }
+
+  // Function to close the dialog, duh
+  function closeDialogBox() {
+    chuckNorrisDialog.style.display = 'none';
+  }
+
+  // Fetch a Chuck Norris joke
+  function fetchJoke() {
+    const apiUrl = 'https://api.chucknorris.io/jokes/random';
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        jokeDisplay.textContent = data.value;
+        openDialog();
+      })
+      .catch(error => {
+        jokeDisplay.textContent = 'Failed to fetch joke';
+        console.error('Error fetching joke:', error);
+      });
+  }
+
+  // Event listener for Konami code
+  document.addEventListener('keydown', (event) => {
+    const key = event.key;
+    const requiredKey = konamiCode[konamiCodePosition];
+
+    if (key === requiredKey) {
+      konamiCodePosition++;
+      if (konamiCodePosition === konamiCode.length) {
+        fetchJoke();
+        konamiCodePosition = 0;
+      }
+    } else {
+      konamiCodePosition = 0;
+    }
+  });
+
+  // Close dialog if clicking outside of it
+  window.addEventListener('click', (event) => {
+    if (event.target === chuckNorrisDialog) {
+      closeDialogBox();
+    }
+  });
+
   // Functions to open and close a modal
   function openModal($el) {
     $el.classList.add('is-active');
