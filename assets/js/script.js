@@ -115,6 +115,11 @@ function displaySearchResults(results) {
                 <p><strong>${movie.Title}</strong> (${movie.Year})</p>
             </div>
         </div>
+        <div class='column'>
+            <button class="button are-small" id='${movie.imdbID}Favorite'>Favorite</button>
+            <button class="button are-small" id='${movie.imdbID}Interested'>Interested</button>
+            <button class="button are-small" id='${movie.imdbID}Watched'>Watched</button>
+        </div>
       `;
 
       modalContent.appendChild(movieElement);
@@ -132,8 +137,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Konami code, duh
   const konamiCode = [
-    'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-    'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'
+    'ArrowUp',
+    'ArrowUp',
+    'ArrowDown',
+    'ArrowDown',
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowLeft',
+    'ArrowRight',
+    'b',
+    'a',
   ];
   let konamiCodePosition = 0;
 
@@ -151,12 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function fetchJoke() {
     const apiUrl = 'https://api.chucknorris.io/jokes/random';
     fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         jokeDisplay.textContent = data.value;
         openDialog();
       })
-      .catch(error => {
+      .catch((error) => {
         jokeDisplay.textContent = 'Failed to fetch joke';
         console.error('Error fetching joke:', error);
       });
