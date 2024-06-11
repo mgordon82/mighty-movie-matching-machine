@@ -89,20 +89,31 @@ function getStreamingService(id) {
 }
 
 function displaySearchResults(results) {
+  const p = document.getElementById('numOfResults');
+  p.textContent = `Showing ${results.length} Result(s)`;
+  p.setAttribute('class', 'my-4');
   const modalContent = document.getElementById('search-results');
-  modalContent.innerHTML = ''; // cleaers past search resultsa
+  modalContent.innerHTML = ''; // clears past search results
   // checks if 'results' exists and if the fetch actually returns results
   if (results && results.length > 0) {
     for (let i = 0; i < results.length; i++) {
       // stores movie object
       const movie = results[i];
-      const movieElement = document.createElement('div');
+      const movieElement = document.createElement('section');
+      movieElement.setAttribute(
+        'class',
+        'columns card has-background-info-dark my-4'
+      );
       movieElement.innerHTML = `
-        <figure class="image">
-          <img src="${movie.Poster}" alt="${movie.Title}">
-        </figure>
-        <div>
-          <p><strong>${movie.Title}</strong> (${movie.Year})</p>
+        <div class='column is-one-quarter'>
+            <figure class="image">
+                <img src="${movie.Poster}" alt="${movie.Title}">
+            </figure>
+        </div>
+        <div class='column'>
+            <div>
+                <p><strong>${movie.Title}</strong> (${movie.Year})</p>
+            </div>
         </div>
       `;
 
@@ -111,8 +122,6 @@ function displaySearchResults(results) {
   } else {
     // something about 'no results found'
   }
-
-  openModal(document.getElementById('modal-js-search'));
 }
 
 // modal functionality
