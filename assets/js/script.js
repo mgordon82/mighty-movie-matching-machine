@@ -6,7 +6,7 @@ const searchInput = document.getElementById('search-bar');
 let movieData = {};
 
 function getSearchResults(title) {
-  fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&s=${title}&type=movie`)
+  fetch(`https://www.omdbapi.com/?apikey=${omdbKey}&s=${title}&type=movie`)
     .then(function (response) {
       return response.json();
     })
@@ -16,7 +16,7 @@ function getSearchResults(title) {
 }
 
 function exactSearchResults(imdbId) {
-  fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&i=${imdbId}&type=movie`)
+  fetch(`https://www.omdbapi.com/?apikey=${omdbKey}&i=${imdbId}&type=movie`)
     .then(function (response) {
       return response.json();
     })
