@@ -1,11 +1,12 @@
 const omdbKey = 'f1744d2a';
 const watchModeApiKey = 'u5P8vBevWv4TKhoIoGy7N3kSgvfsLW5OmPNNunDA';
 const movieUpdate = document.getElementById('test');
-
+const searchBtn = document.getElementById('search-button');
+const searchInput = document.getElementById('search-bar');
 let movieData = {};
 
 function getSearchResults(title) {
-  fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&s=${title}`)
+  fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&s=${title}&type=movie`)
     .then(function (response) {
       return response.json();
     })
@@ -15,8 +16,8 @@ function getSearchResults(title) {
     });
 }
 
-function exactSearchResults(exactTitle) {
-  fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&i=${exactTitle}`)
+function exactSearchResults(imdbId) {
+  fetch(`http://www.omdbapi.com/?apikey=${omdbKey}&i=${imdbId}&type=movie`)
     .then(function (response) {
       return response.json();
     })
@@ -26,6 +27,19 @@ function exactSearchResults(exactTitle) {
       // movieUpdate.textContent = data.Title;
     });
 }
+
+searchBtn.addEventListener('click', function() {
+  if (searchInput.value !== "") {
+    console.log(searchInput.value);
+    getSearchResults(searchInput.value);
+  }
+})
+
+searchInput.addEventListener('keypress', function(event) {
+  if (event.key === "Enter") {
+    searchBtn.click();
+  }
+})
 
 function getMovieId(value) {
   fetch(
