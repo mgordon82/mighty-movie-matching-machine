@@ -11,8 +11,7 @@ function getSearchResults(title) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      console.log(data.Search[0]);
+      console.log('results', data);
     });
 }
 
@@ -28,18 +27,18 @@ function exactSearchResults(imdbId) {
     });
 }
 
-searchBtn.addEventListener('click', function() {
-  if (searchInput.value !== "") {
-    console.log(searchInput.value);
+searchBtn.addEventListener('click', function () {
+  if (searchInput.value !== '') {
+    console.log('input value', searchInput.value);
     getSearchResults(searchInput.value);
   }
-})
+});
 
-searchInput.addEventListener('keypress', function(event) {
-  if (event.key === "Enter") {
+searchInput.addEventListener('keypress', function (event) {
+  if (event.key === 'Enter') {
     searchBtn.click();
   }
-})
+});
 
 function getMovieId(value) {
   fetch(
@@ -83,10 +82,6 @@ function getStreamingService(id) {
       console.log('movie data', movieData);
     });
 }
-
-getSearchResults('Endgame');
-exactSearchResults('tt4154796');
-getMovieId('Avengers: Endgame');
 
 // modal functionality
 
