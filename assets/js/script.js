@@ -12,6 +12,11 @@ function getSearchResults(title) {
     })
     .then(function (data) {
       console.log('results', data);
+      if (data.Search) {
+        displaySearchResults(data.Search);
+      } else {
+        displaySearchResults([]); // passes an empty array if no results found
+      }
     });
 }
 
@@ -81,6 +86,33 @@ function getStreamingService(id) {
       movieData = filteredData;
       console.log('movie data', movieData);
     });
+}
+
+function displaySearchResults(results) {
+  const modalContent = document.getElementById('search-results');
+  modalContent.innerHTML = ''; // cleaers past search resultsa
+  // checks if 'results' exists and if the fetch actually returns results
+  if (results && results.length > 0) {
+    for (let i = 0; i < results.length; i++) {
+      // stores movie object
+      const movie = results[i];
+      const movieElement = document.createElement('div');
+      movieElement.innerHTML = `
+        <figure class="image">
+          <img src="${movie.Poster}" alt="${movie.Title}">
+        </figure>
+        <div>
+          <p><strong>${movie.Title}</strong> (${movie.Year})</p>
+        </div>
+      `;
+
+      modalContent.appendChild(movieElement);
+    }
+  } else {
+    // something about 'no results found'
+  }
+
+  openModal(document.getElementById('modal-js-search'));
 }
 
 // modal functionality
