@@ -55,9 +55,18 @@
                     </div> 
                 </div>
                 <footer class="card-footer">
-                    <button class="card-footer-item" id='favorite'>Favorite</button>
-                    <button class="card-footer-item" id='watched'>Watched</button>
-                    <button class="card-footer-item" id='remove'>Remove</button>
+                    <button class="card-footer-item" id='favorite'>
+                        <img src="./assets/img/favorite.png" alt="favorite icon" />
+                        Favorite
+                    </button>
+                    <button class="card-footer-item" id='watched'>
+                        <img src="./assets/img/watched.png" alt="watched icon" />
+                        Watched
+                    </button>
+                    <button class="card-footer-item" id='remove'>
+                        <img src="./assets/img/delete.png" alt="remove icon" />
+                        Remove
+                    </button>
                   </footer>
               </div>
             </div>
@@ -89,23 +98,59 @@
       <section class="section">
         <div class="container">
           <div class="columns">
-            <div class="column">
-              <section id="favorites" class="box has-text-centered">
+            <div class="column is-half">
+              <section id="favorites" class="box favorites">
                 <h2 class="title is-4">Your Favorites</h2>
                 <ul class="card-list">
-                  <!-- I called these favorite-card#, so target card with class = favorite-card1 etc -->
-                  <li class="card favorite-card1"> Favorite 1</li>
+                  <li class="card">
+                    <div class="card-content card-content-override">
+                        <div class="columns is-justify-content-space-between">
+                            <div class="column">
+                                <p class="title is-5">Movie 1</p> 
+                            </div>
+                            <div class="column has-text-right is-one-quarter">
+                                <button id='favorite'>
+                                    <img src="./assets/img/favorite.png" alt="favorite icon" />                                    
+                                </button>
+                                <button id='watched'>
+                                    <img src="./assets/img/watched.png" alt="watched icon" />                                    
+                                </button>
+                                <button id='remove'>
+                                    <img src="./assets/img/delete.png" alt="remove icon" />                                    
+                                </button>
+                            </div>
+                        </div>                                                                       
+                    </div>                    
+                  </li>
                   <li class="card favorite-card2"> Favorite 2</li>
                   <li class="card favorite-card3"> Favorite 3</li>
                 </ul>
               </section>
             </div>
             <div class="column">
-              <section id="watch-history" class="box has-text-centered">
+              <section id="watch-history" class="box watch-history">
                 <h2 class="title is-4">Watch History</h2>
                 <ul class="card-list">
-                  <!-- I called these history-card#, so target card with class = history-card1 etc -->
-                  <li class="card history-card1"> History 1 </li>
+                  <li class="card history-card1">
+                    <div class="card-content card-content-override">
+                        <div class="columns is-justify-content-space-between">
+                            <div class="column">
+                                <p class="title is-5">Movie 1</p> 
+                            </div>
+                            <div class="column has-text-right is-one-quarter">
+                                <button id='favorite'>
+                                    <img src="./assets/img/favorite.png" alt="favorite icon" />                                    
+                                </button>
+                                <button id='watched'>
+                                    <img src="./assets/img/bookmark.png" alt="bookmark icon" />                                    
+                                </button>
+                                <button id='remove'>
+                                    <img src="./assets/img/delete.png" alt="remove icon" />                                    
+                                </button>
+                            </div>
+                        </div>                                                                       
+                    </div> 
+                  </li>
                   <li class="card history-card2"> History 2 </li>
                   <li class="card history-card3"> History 3 </li>
                 </ul>

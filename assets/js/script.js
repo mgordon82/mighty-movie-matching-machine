@@ -115,10 +115,19 @@ function displaySearchResults(results) {
                 <p><strong>${movie.Title}</strong> (${movie.Year})</p>
             </div>
         </div>
-        <div class='column'>
-            <button class="button are-small" id='${movie.imdbID}Favorite'>Favorite</button>
-            <button class="button are-small" id='${movie.imdbID}Interested'>Interested</button>
-            <button class="button are-small" id='${movie.imdbID}Watched'>Watched</button>
+        <div class='column modal-actions'>
+            <button class="button are-small" id='${movie.imdbID}Favorite'>
+                <img src="./assets/img/favorite.png" alt="favorite icon" />
+                Favorite
+            </button>
+            <button class="button are-small" id='${movie.imdbID}Interested'>
+                <img src="./assets/img/bookmark.png" alt="bookmark icon" />    
+                Interested
+            </button>
+            <button class="button are-small" id='${movie.imdbID}Watched'>
+                <img src="./assets/img/watched.png" alt="watched icon" />
+                Watched
+            </button>
         </div>
       `;
 
@@ -132,7 +141,7 @@ function displaySearchResults(results) {
         const noResultEl = document.createElement('p');
         noResultEl.textContent = `No results were found for your search, but here is a Chuck Norris joke instead: ${data.value}`;
         modalContent.appendChild(noResultEl);
-      })
+      });
   }
 }
 
