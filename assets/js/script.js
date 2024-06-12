@@ -125,7 +125,14 @@ function displaySearchResults(results) {
       modalContent.appendChild(movieElement);
     }
   } else {
-    // something about 'no results found'
+    fetch('https://api.chucknorris.io/jokes/random')
+      .then((response) => response.json())
+      .then((data) => {
+        const modalContent = document.getElementById('search-results');
+        const noResultEl = document.createElement('p');
+        noResultEl.textContent = `No results were found for your search, but here is a Chuck Norris joke instead: ${data.value}`;
+        modalContent.appendChild(noResultEl);
+      })
   }
 }
 
