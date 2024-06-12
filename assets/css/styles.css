@@ -192,6 +192,31 @@ main {
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0);
+  .upnext-image {
+    width: 100px;
+  }
+
+  .description {
+    overflow-y: auto;
+    max-height: 75px;
+    font-size: 0.8em;
+  }
+
+  .streaming-list-header {
+    font-size: 0.9em;
+    text-transform: uppercase;
+  }
+
+  .streaming-list {
+    li {
+      display: inline-block;
+      border-right: 1px solid #ccc;
+      padding: 0 10px;
+    }
+    li:last-child {
+      border-right: none;
+    }
+  }
 }
 
 .card {
@@ -287,7 +312,6 @@ main {
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
-  text-align: center;
 }
 
 #up-next .card-content .title {
@@ -313,7 +337,6 @@ a:focus {
   box-shadow: 0 4px 8px var(--rich-black);
   border: 2px solid rgba(0, 0, 0, 0.4);
   border-radius: 8px;
-  text-align: center;
 }
 
 .favorites-box,
@@ -328,12 +351,8 @@ a:focus {
   }
 }
 
-.favorite-card1,
-.favorite-card2,
-.favorite-card3,
-.history-card1,
-.history-card2,
-.history-card3 {
+.favorite-card,
+.history-card {
   background-image: var(--gradient-reverse);
   color: var(--ghost-white);
   box-shadow: 0 4px 8px var(--rich-black);
@@ -341,7 +360,6 @@ a:focus {
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
-  text-align: center;
 }
 
 #watch-history .card-content .title {
