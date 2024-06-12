@@ -5,31 +5,138 @@
   --rich-black: #00171fff;
   --red-cmyk: #ee2e31ff;
   --davys-gray: #50514fff;
-  
+
   /* Define gradient */
-  --gradient-top: linear-gradient(0deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
-  --gradient-right: linear-gradient(90deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
-  --gradient-bottom: linear-gradient(180deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
-  --gradient-left: linear-gradient(270deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
-  --gradient-top-right: linear-gradient(45deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
-  --gradient-bottom-right: linear-gradient(135deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
-  --gradient-top-left: linear-gradient(225deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
-  --gradient-bottom-left: linear-gradient(315deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
-  --gradient-radial: radial-gradient(var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
-  --gradient-ghost-white-jonquil: linear-gradient(180deg, var(--ghost-white), var(--jonquil));
-  --gradient-ghost-white-rich-black: linear-gradient(0deg, var(--ghost-white), var(--rich-black));
-  --gradient-ghost-white-red-cmyk: linear-gradient(330deg, var(--ghost-white), var(--red-cmyk));
-  --gradient-white-red: linear-gradient(315deg, var(--ghost-white), var(--red-cmyk));
-  --gradient-ghost-white-davys-gray: linear-gradient(0deg, var(--ghost-white), var(--davys-gray));
-  --gradient-jonquil-rich-black: linear-gradient(180deg, var(--jonquil), var(--rich-black));
-  --gradient-jonquil-red-cmyk: linear-gradient(180deg, var(--jonquil), var(--red-cmyk));
-  --gradient-jonquil-davys-gray: linear-gradient(180deg, var(--jonquil), var(--davys-gray));
-  --gradient-rich-black-red-cmyk: linear-gradient(180deg, var(--rich-black), var(--red-cmyk));
-  --gradient-rich-black-davys-gray: linear-gradient(180deg, var(--rich-black), var(--davys-gray));
-  --gradient-red-cmyk-davys-gray: linear-gradient(180deg, var(--red-cmyk), var(--davys-gray));
+  --gradient-top: linear-gradient(
+    0deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-right: linear-gradient(
+    90deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-bottom: linear-gradient(
+    180deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-left: linear-gradient(
+    270deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-top-right: linear-gradient(
+    45deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-bottom-right: linear-gradient(
+    135deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-top-left: linear-gradient(
+    225deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-bottom-left: linear-gradient(
+    315deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-radial: radial-gradient(
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-ghost-white-jonquil: linear-gradient(
+    180deg,
+    var(--ghost-white),
+    var(--jonquil)
+  );
+  --gradient-ghost-white-rich-black: linear-gradient(
+    0deg,
+    var(--ghost-white),
+    var(--rich-black)
+  );
+  --gradient-ghost-white-red-cmyk: linear-gradient(
+    330deg,
+    var(--ghost-white),
+    var(--red-cmyk)
+  );
+  --gradient-white-red: linear-gradient(
+    315deg,
+    var(--ghost-white),
+    var(--red-cmyk)
+  );
+  --gradient-ghost-white-davys-gray: linear-gradient(
+    0deg,
+    var(--ghost-white),
+    var(--davys-gray)
+  );
+  --gradient-jonquil-rich-black: linear-gradient(
+    180deg,
+    var(--jonquil),
+    var(--rich-black)
+  );
+  --gradient-jonquil-red-cmyk: linear-gradient(
+    180deg,
+    var(--jonquil),
+    var(--red-cmyk)
+  );
+  --gradient-jonquil-davys-gray: linear-gradient(
+    180deg,
+    var(--jonquil),
+    var(--davys-gray)
+  );
+  --gradient-rich-black-red-cmyk: linear-gradient(
+    180deg,
+    var(--rich-black),
+    var(--red-cmyk)
+  );
+  --gradient-rich-black-davys-gray: linear-gradient(
+    180deg,
+    var(--rich-black),
+    var(--davys-gray)
+  );
+  --gradient-red-cmyk-davys-gray: linear-gradient(
+    180deg,
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
 }
 
-body, html {
+body,
+html {
   height: 100%;
   background-image: var(--gradient-ghost-white-rich-black);
 }
@@ -56,7 +163,7 @@ body, html {
 .header-target {
   background-image: var(--gradient-white-red);
   color: var(--ghost-white);
-  position: relative; 
+  position: relative;
 }
 
 .header-target::after {
@@ -69,11 +176,9 @@ body, html {
   background: var(--gradient-jonquil-davys-gray); /* Background gradient */
 }
 
-
-
 .title {
   color: var(--ghost-white);
-  text-shadow: 2px 2px 4px var(--rich-black) 
+  text-shadow: 2px 2px 4px var(--rich-black);
 }
 
 /* Styling for up-next container */
@@ -81,15 +186,35 @@ body, html {
   background-color: var(--rich-black);
 }
 
+.upnext-image {
+  width: 100px;
+}
+
+.streaming-list-header {
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+
+.streaming-list {
+  li {
+    display: inline-block;
+    border-right: 1px solid #ccc;
+    padding: 0 10px;
+  }
+  li:last-child {
+    border-right: none;
+  }
+}
+
 #search-button {
   margin-bottom: 0;
   vertical-align: middle;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   background-color: var(--red-cmyk);
   color: var(--ghost-white);
   border: 2px solid var(--jonquil);
   padding: 0.525rem 1rem;
-  border-radius: 0 5px 5px 0; 
+  border-radius: 0 5px 5px 0;
   cursor: pointer;
   transition: background-image 0.3s ease;
 }
@@ -99,7 +224,7 @@ body, html {
 }
 
 #search-button:active {
-  box-shadow: 0 0 10px 3px var(--red-cmyk) /* Red glow on click */
+  box-shadow: 0 0 10px 3px var(--red-cmyk); /* Red glow on click */
 }
 
 .custom-dialog {
@@ -142,4 +267,3 @@ body, html {
 .close-dialog:hover {
   color: var(--red-cmyk);
 }
-

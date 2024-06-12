@@ -35,37 +35,48 @@
       <section id="up-next" class="section">
         <div class="container up-next-container">
           <h2 class="title is-4 ">Up Next</h2>
-          <div class="columns is-multiline">
-            <div class="column is-one-fifth">
+          <div class="columns is-align-items-start is-multiline">
+            <div class="column is-one-half">
               <div class="card ">
-                <!-- cards are named movie-card1 etc -->
                 <div class="card-content movie-card1">
-                  <p class="title is-5 ">Movie 1</p>
+                    <div class="columns flex-wrap">
+                        <div class="column is-one-quarter"><img src="./assets/img/image-placeholder.png" class="upnext-image" alt="placeholder" /></div>
+                        <div class="column">
+                            <p class="title is-5">Movie 1</p>
+                            <div class="description">Here is the description of the movie. This is a kick-arse movie that does cool tricks, but not as cool as Chuck Norris</div>
+                        </div> 
+                    </div>
+                    <div class="is-full">
+                        <h4 class="streaming-list-header">Stream on these platforms</h4>
+                        <ul class="streaming-list" id="streamingList">
+                            <li><a target="_blank" href="#">Apple TV</a></li>
+                            <li><a target="_blank" href="#">Hulu</a></li>
+                        </ul>
+                    </div> 
                 </div>
+                <footer class="card-footer">
+                    <button class="card-footer-item" id='favorite'>Favorite</button>
+                    <button class="card-footer-item" id='watched'>Watched</button>
+                    <button class="card-footer-item" id='remove'>Remove</button>
+                  </footer>
               </div>
             </div>
-            <div class="column is-one-fifth">
-              <div class="card">
-                <div class="card-content movie-card2">
-                  <p class="title is-5">Movie 2</p>
-                </div>
-              </div>
-            </div>
-            <div class="column is-one-fifth">
+            
+            <div class="column is-half">
               <div class="card">
                 <div class="card-content movie-card3">
                   <p class="title is-5">Movie 3</p>
                 </div>
               </div>
             </div>
-            <div class="column is-one-fifth">
+            <div class="column is-half">
               <div class="card">
                 <div class="card-content movie-card4">
                   <p class="title is-5">Movie 4</p>
                 </div>
               </div>
             </div>
-            <div class="column is-one-fifth">
+            <div class="column is-half">
               <div class="card">
                 <div class="card-content movie-card5">
                   <p class="title is-5">Movie 5</p>
@@ -82,7 +93,7 @@
               <section id="favorites" class="box has-text-centered">
                 <h2 class="title is-4">Your Favorites</h2>
                 <ul class="card-list">
-                  <!-- I called tehse favorite-card#, so target card with class = favorite-card1 etc -->
+                  <!-- I called these favorite-card#, so target card with class = favorite-card1 etc -->
                   <li class="card favorite-card1"> Favorite 1</li>
                   <li class="card favorite-card2"> Favorite 2</li>
                   <li class="card favorite-card3"> Favorite 3</li>
