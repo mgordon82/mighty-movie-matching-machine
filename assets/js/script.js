@@ -4,6 +4,9 @@ const movieUpdate = document.getElementById('test');
 const searchBtn = document.getElementById('search-button');
 const searchInput = document.getElementById('search-bar');
 let movieData = {};
+let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+let interested = JSON.parse(localStorage.getItem('interested')) || [];
+let watched = JSON.parse(localStorage.getItem('watched')) || [];
 
 function getSearchResults(title) {
   fetch(`https://www.omdbapi.com/?apikey=${omdbKey}&s=${title}&type=movie`)
@@ -88,6 +91,69 @@ function getStreamingService(id) {
     });
 }
 
+function addToFavorites(movie) {
+  // checks if movie is already in favorites array to avoid duplicates
+  let isFavorite = false;
+  for (let i = 0; i < favorites.length; i++) {
+    if (favorites[i].imdbID === movie.imdbID) {
+      isFavorite = true;
+      break;
+    }
+  }
+
+  // if movie not in array already
+  if (!isFavorite) {
+
+    favorites.push(movie)
+
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+
+    console.log(`${movie.Title} added to favorites.`)
+  } else {
+    console.log(`${movie.Title} is already in your favorites list.`)
+  }
+}
+
+function addToWatched(movie) {
+  let isWatched = false;
+  for (let i = 0; i < watched.length; i++) {
+    if (watched[i].imdbID === movie.imdbID) {
+      isWatched = true;
+      break;
+    }
+  }
+
+  // if movie not in array already
+  if (!isWatched) {
+    watched.push(movie)
+
+    localStorage.setItem('watched', JSON.stringify(watched));
+
+    console.log(`${movie.Title} added to watched.`)
+  } else {
+    console.log(`${movie.Title} is already in your watched list.`)
+  }
+}
+
+function addToInterested(movie) {
+  let isInterested = false;
+  for (let i = 0; i < interested.length; i++) {
+    if (interested[i].imdbID === movie.imdbID) {
+      isInterested = true;
+      break;
+    }
+  }
+
+  if (!isInterested) {
+    interested.push(movie)
+
+    localStorage.setItem('interested', JSON.stringify(interested));
+    console.log(`${movie.Title} added to interested.`)
+  } else {
+    console.log(`${movie.Title} is already in your interested list.`)
+  }
+}
+
 function displaySearchResults(results) {
   const p = document.getElementById('numOfResults');
   p.textContent = `Showing ${results.length} Result(s)`;
@@ -132,6 +198,27 @@ function displaySearchResults(results) {
       `;
 
       modalContent.appendChild(movieElement);
+
+      // adds even listener to favorite button
+
+      const favoriteButton = document.getElementById(`${movie.imdbID}Favorite`)
+      favoriteButton.addEventListener('click', function() {
+        addToFavorites(movie);
+      })
+
+      // adds event listener to interested button
+
+      const interestedButton = document.getElementById(`${movie.imdbID}Interested`)
+      interestedButton.addEventListener('click', function () {
+        addToInterested(movie)
+      })
+
+      // adds event listener to watched button
+
+      const watchedButton = document.getElementById(`${movie.imdbID}Watched`)
+      watchedButton.addEventListener('click', function() {
+        addToWatched(movie)
+      })
     }
   } else {
     fetch('https://api.chucknorris.io/jokes/random')
