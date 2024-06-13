@@ -32,15 +32,17 @@
       </section>
     </header>
     <main>
-      <section id="up-next" class="section">
+      <section id="up-next-section" class="section">
         <div class="container up-next-container">
-          <h2 class="title is-4 ">Up Next</h2>
+          <h2 class="title is-4">Up Next</h2>
           <div class="columns is-align-items-start is-multiline">
             <div class="column is-one-half">
-              <div class="card ">
+              <div class="card">
                 <div class="card-content movie-card1">
                     <div class="columns flex-wrap">
-                        <div class="column is-one-quarter"><img src="./assets/img/image-placeholder.png" class="upnext-image" alt="placeholder" /></div>
+                        <div class="column is-one-quarter">
+                          <img src="./assets/img/image-placeholder.png" class="upnext-image" alt="placeholder" />
+                        </div>
                         <div class="column">
                             <p class="title is-5">Movie 1</p>
                             <div class="description">Here is the description of the movie. This is a kick-arse movie that does cool tricks, but not as cool as Chuck Norris. Now if we were to be as good as Chuck Norris, we would implode immediately and cease to exist. No one can be as good as him.</div>
@@ -56,21 +58,21 @@
                 </div>
                 <footer class="card-footer">
                     <button class="card-footer-item" id='favorite'>
-                        <img src="./assets/img/favorite.png" alt="favorite icon" />
+                        <img src="./assets/img/favorite.png" alt="favorite icon" class="icon-fixed-size" />
                         Favorite
                     </button>
                     <button class="card-footer-item" id='watched'>
-                        <img src="./assets/img/watched.png" alt="watched icon" />
+                        <img src="./assets/img/watched.png" alt="watched icon" class="icon-fixed-size" />
                         Watched
                     </button>
                     <button class="card-footer-item" id='remove'>
-                        <img src="./assets/img/delete.png" alt="remove icon" />
+                        <img src="./assets/img/delete.png" alt="remove icon" class="icon-fixed-size" />
                         Remove
                     </button>
                   </footer>
               </div>
             </div>
-            
+            <!-- I wanna remove these, but I'm leaving them here for formatting atm 6/12/24 -->
             <div class="column is-half">
               <div class="card">
                 <div class="card-content movie-card3">
@@ -85,13 +87,7 @@
                 </div>
               </div>
             </div>
-            <div class="column is-half">
-              <div class="card">
-                <div class="card-content movie-card5">
-                  <p class="title is-5">Movie 5</p>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
@@ -106,24 +102,23 @@
                     <div class="card-content card-content-override">
                         <div class="columns is-justify-content-space-between">
                             <div class="column">
+                              <!-- Leaving one sample card here for formatting reference -->
                                 <p class="title is-5">Movie 1</p> 
                             </div>
                             <div class="column has-text-right is-one-quarter">
                                 <button id='favorite'>
-                                    <img src="./assets/img/favorite.png" alt="favorite icon" />                                    
+                                    <img src="./assets/img/bookmark.png" alt="upnext icon" class="icon-fixed-size"/>                                    
                                 </button>
                                 <button id='watched'>
-                                    <img src="./assets/img/watched.png" alt="watched icon" />                                    
+                                    <img src="./assets/img/watched.png" alt="watched icon" class="icon-fixed-size"/>                                    
                                 </button>
                                 <button id='remove'>
-                                    <img src="./assets/img/delete.png" alt="remove icon" />                                    
+                                    <img src="./assets/img/delete.png" alt="remove icon" class="icon-fixed-size"/>                                    
                                 </button>
                             </div>
                         </div>                                                                       
                     </div>                    
                   </li>
-                  <li class="card favorite-card"> Favorite 2</li>
-                  <li class="card favorite-card"> Favorite 3</li>
                 </ul>
               </section>
             </div>
@@ -132,27 +127,26 @@
                 <h2 class="title is-4">Watch History</h2>
                 <ul class="card-list">
                   <li class="card history-card">
+                    <!-- Leaving one sample card here for formatting reference -->
                     <div class="card-content card-content-override">
                         <div class="columns is-justify-content-space-between">
                             <div class="column">
                                 <p class="title is-5">Movie 1</p> 
                             </div>
-                            <div class="column has-text-right is-one-quarter">
-                                <button id='favorite'>
-                                    <img src="./assets/img/favorite.png" alt="favorite icon" />                                    
-                                </button>
+                            <div class="column has-text-right is-one-quarter">                                
                                 <button id='watched'>
-                                    <img src="./assets/img/bookmark.png" alt="bookmark icon" />                                    
+                                    <img src="./assets/img/bookmark.png" alt="bookmark icon" class="icon-fixed-size"/>                                    
                                 </button>
+                                <button id='favorite'>
+                                  <img src="./assets/img/favorite.png" alt="favorite icon" class="icon-fixed-size"/>                                    
+                              </button>
                                 <button id='remove'>
-                                    <img src="./assets/img/delete.png" alt="remove icon" />                                    
+                                    <img src="./assets/img/delete.png" alt="remove icon" class="icon-fixed-size"/>                                    
                                 </button>
                             </div>
                         </div>                                                                       
                     </div> 
                   </li>
-                  <li class="card history-card"> History 2 </li>
-                  <li class="card history-card"> History 3 </li>
                 </ul>
               </section>
             </div>
@@ -165,7 +159,6 @@
         </div>
       </div>      
     </main>
-  </main>
   <script src="assets/js/script.js"></script>
   <div id="modal-js-search" class="modal">
     <div class="modal-background"></div>

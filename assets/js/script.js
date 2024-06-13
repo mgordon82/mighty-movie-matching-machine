@@ -5,7 +5,7 @@ const searchBtn = document.getElementById('search-button');
 const searchInput = document.getElementById('search-bar');
 let movieData = {};
 let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-let interested = JSON.parse(localStorage.getItem('interested')) || [];
+let upNext = JSON.parse(localStorage.getItem('upNext')) || [];
 let watched = JSON.parse(localStorage.getItem('watched')) || [];
 
 function getSearchResults(title) {
@@ -108,7 +108,9 @@ function addToFavorites(movie) {
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
 
-    console.log(`${movie.Title} added to favorites.`)
+    console.log(`${movie.Title} added to favorites list.`)
+    // Added updateSection call to move into favorites
+    updateFavoritesSection(movie);
   } else {
     console.log(`${movie.Title} is already in your favorites list.`)
   }
@@ -129,28 +131,31 @@ function addToWatched(movie) {
 
     localStorage.setItem('watched', JSON.stringify(watched));
 
-    console.log(`${movie.Title} added to watched.`)
+    console.log(`${movie.Title} added to watched list.`)
+    // Added updateWatchHistorySeciton call to move into watch-history.
+    updateWatchHistorySection(movie);
   } else {
     console.log(`${movie.Title} is already in your watched list.`)
   }
 }
 
-function addToInterested(movie) {
-  let isInterested = false;
-  for (let i = 0; i < interested.length; i++) {
-    if (interested[i].imdbID === movie.imdbID) {
-      isInterested = true;
+function addToUpNext(movie) {
+  let isUpNext = false;
+  for (let i = 0; i < upNext.length; i++) {
+    if (upNext[i].imdbID === movie.imdbID) {
+      isUpNext = true;
       break;
     }
   }
 
-  if (!isInterested) {
-    interested.push(movie)
-
-    localStorage.setItem('interested', JSON.stringify(interested));
-    console.log(`${movie.Title} added to interested.`)
+  if (!isUpNext) {
+    upNext.push(movie);
+    localStorage.setItem('upNext', JSON.stringify(upNext));
+    console.log(`${movie.Title} added to up-next list.`);
+    // fixed targetting to up-next-section
+    updateUpNextSection(movie);
   } else {
-    console.log(`${movie.Title} is already in your interested list.`)
+    console.log(`${movie.Title} is already in your up-next list.`);
   }
 }
 
@@ -186,9 +191,9 @@ function displaySearchResults(results) {
                 <img src="./assets/img/favorite.png" alt="favorite icon" />
                 Favorite
             </button>
-            <button class="button are-small" id='${movie.imdbID}Interested'>
+            <button class="button are-small" id='${movie.imdbID}UpNext'>
                 <img src="./assets/img/bookmark.png" alt="bookmark icon" />    
-                Interested
+                UpNext
             </button>
             <button class="button are-small" id='${movie.imdbID}Watched'>
                 <img src="./assets/img/watched.png" alt="watched icon" />
@@ -206,19 +211,19 @@ function displaySearchResults(results) {
         addToFavorites(movie);
       })
 
-      // adds event listener to interested button
+      // adds event listener to up-next button
 
-      const interestedButton = document.getElementById(`${movie.imdbID}Interested`)
-      interestedButton.addEventListener('click', function () {
-        addToInterested(movie)
+      const upNextButton = document.getElementById(`${movie.imdbID}UpNext`)
+      upNextButton.addEventListener('click', function () {
+        addToUpNext(movie);
       })
 
       // adds event listener to watched button
 
       const watchedButton = document.getElementById(`${movie.imdbID}Watched`)
       watchedButton.addEventListener('click', function() {
-        addToWatched(movie)
-      })
+        addToWatched(movie);
+      });
     }
   } else {
     fetch('https://api.chucknorris.io/jokes/random')
@@ -346,3 +351,181 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// The next three are kind of redundant, but couldn't make it work as only one function
+function updateUpNextSection(movie) {
+  // We're targetting the up-next-container and adding our movie to it
+  const sectionContainer = document.querySelector('#up-next-section .up-next-container .columns');
+  const movieElement = document.createElement('li');
+  // Creating elements and using bulma for styling for now.
+  movieElement.classList.add('column', 'is-one-half', `movie-${movie.imdbID}`);
+  movieElement.innerHTML = `
+    <div class="card">
+      <div class="card-content">
+        <figure class="image">
+          <img src="${movie.Poster}" alt="${movie.Title}">
+        </figure>
+        <p class="title is-5">${movie.Title}</p>
+        <button class="button are-small favorite-button">
+          <img src="./assets/img/favorite.png" alt="favorite icon" />
+          Favorite
+        </button>
+        <button class="button are-small watched-button">
+          <img src="./assets/img/watched.png" alt="watched icon" />
+          Watched
+        </button>
+        <button class="button are-small remove-button">
+          <img src="./assets/img/delete.png" alt="remove icon" />
+          Remove
+        </button>
+      </div>
+    </div>
+  `;
+  sectionContainer.appendChild(movieElement);
+
+  // Adding event listeners to buttons
+  movieElement.querySelector('.favorite-button').addEventListener('click', function() {
+    addToFavorites(movie);
+  });
+
+  /* I thought the watched button deserved special funcitonality inside Up Next, logically it
+    should funciton as both a watched button and a removed button, so that's what it does.
+  */
+  movieElement.querySelector('.watched-button').addEventListener('click', function() {
+    // Checks if the movie is already in the watched list
+    let isWatched = watched.some(m => m.imdbID === movie.imdbID);
+
+    // If the movie is not in the watched list, add it
+    if (!isWatched) {
+      addToWatched(movie);
+    }
+
+    // Remove the movie from the up next list
+    removeFromUpNext(movie);
+  });
+
+  movieElement.querySelector('.remove-button').addEventListener('click', function() {
+    removeFromUpNext(movie);
+  });
+}
+
+
+function updateFavoritesSection(movie) {
+  // Same thing here, we're targetting favorites and adding a new li with our movies
+  const sectionContainer = document.querySelector('#favorites .card-list');
+  const movieElement = document.createElement('li');
+  movieElement.classList.add('card', 'favorite-card', `movie-${movie.imdbID}`);
+  movieElement.innerHTML = `
+    <div class="card-content">
+      <figure class="image">
+        <img src="${movie.Poster}" alt="${movie.Title}">
+      </figure>
+      <p class="title is-5">${movie.Title}</p>
+      <button class="button are-small up-next-button">
+        <img src="./assets/img/bookmark.png" alt="bookmark icon" />    
+        UpNext
+      </button>
+      <button class="button are-small watched-button">
+        <img src="./assets/img/watched.png" alt="watched icon" />
+        Watched
+      </button>
+      <button class="button are-small remove-button">
+        <img src="./assets/img/delete.png" alt="remove icon" />
+        Remove
+      </button>
+    </div>
+  `;
+  sectionContainer.appendChild(movieElement);
+
+  // Same deal, adding event listeners to the buttons
+  movieElement.querySelector('.up-next-button').addEventListener('click', function () {
+    addToUpNext(movie);
+  });
+
+  movieElement.querySelector('.watched-button').addEventListener('click', function() {
+    addToWatched(movie);
+  });
+
+  movieElement.querySelector('.remove-button').addEventListener('click', function() {
+    removeFromFavorites(movie);
+  });
+}
+
+
+function updateWatchHistorySection(movie) {
+  // Same as last two, but for watch history
+  const sectionContainer = document.querySelector('#watch-history .card-list');
+  const movieElement = document.createElement('li');
+  movieElement.classList.add('card', 'history-card', `movie-${movie.imdbID}`);
+  movieElement.innerHTML = `
+    <div class="card-content">
+      <figure class="image">
+        <img src="${movie.Poster}" alt="${movie.Title}">
+      </figure>
+      <p class="title is-5">${movie.Title}</p>
+      <button class="button are-small favorite-button">
+        <img src="./assets/img/favorite.png" alt="favorite icon" />
+        Favorite
+      </button>
+      <button class="button are-small up-next-button">
+        <img src="./assets/img/bookmark.png" alt="bookmark icon" />    
+        UpNext
+      </button>
+      <button class="button are-small remove-button">
+        <img src="./assets/img/delete.png" alt="remove icon" />
+        Remove
+      </button>
+    </div>
+  `;
+  sectionContainer.appendChild(movieElement);
+
+  // Add event listeners for buttons
+  movieElement.querySelector('.favorite-button').addEventListener('click', function() {
+    addToFavorites(movie);
+  });
+
+  movieElement.querySelector('.up-next-button').addEventListener('click', function () {
+    addToUpNext(movie);
+  });
+
+  movieElement.querySelector('.remove-button').addEventListener('click', function() {
+    removeFromWatched(movie);
+  });
+}
+
+// Functionality for remove button for Upnext
+function removeFromUpNext(movie) {
+  upNext = upNext.filter(function(m) {
+    return m.imdbID !== movie.imdbID;
+  });
+  localStorage.setItem('upNext', JSON.stringify(upNext));
+
+  // Remove the movie element from the UI
+  const sectionContainer = document.querySelector('#up-next-section .up-next-container .columns');
+  const movieElement = sectionContainer.querySelector('.movie-' + movie.imdbID);
+  sectionContainer.removeChild(movieElement);
+}
+
+// Remove button functionality for favs
+function removeFromFavorites(movie) {
+  favorites = favorites.filter(function(m) {
+    return m.imdbID !== movie.imdbID;
+  });
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+
+  const sectionContainer = document.querySelector('#favorites .card-list');
+  const movieElement = sectionContainer.querySelector('.movie-' + movie.imdbID);
+  sectionContainer.removeChild(movieElement);
+}
+
+// Remove button for watched
+function removeFromWatched(movie) {
+  watched = watched.filter(function(m) {
+    return m.imdbID !== movie.imdbID;
+  });
+  localStorage.setItem('watched', JSON.stringify(watched));
+
+  const sectionContainer = document.querySelector('#watch-history .card-list');
+  const movieElement = sectionContainer.querySelector('.movie-' + movie.imdbID);
+  sectionContainer.removeChild(movieElement);
+}
