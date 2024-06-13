@@ -233,3 +233,29 @@ a:focus {
   margin-right: 5px;
   margin-top: 3px;
 }
+
+.upnext-image {
+  width: 100px;
+}
+
+.description {
+  overflow-y: auto;
+  max-height: 75px;
+  font-size: 0.8em;
+}
+
+.streaming-list-header {
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+
+.streaming-list {
+  li {
+    display: inline-block;
+    border-right: 1px solid #ccc;
+    padding: 0 10px;
+  }
+  li:last-child {
+    border-right: none;
+  }
+}
