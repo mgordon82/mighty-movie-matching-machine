@@ -193,7 +193,7 @@ function displaySearchResults(results) {
             </button>
             <button class="button are-small" id='${movie.imdbID}UpNext'>
                 <img src="./assets/img/bookmark.png" alt="bookmark icon" />    
-                UpNext
+                Up Next
             </button>
             <button class="button are-small" id='${movie.imdbID}Watched'>
                 <img src="./assets/img/watched.png" alt="watched icon" />
