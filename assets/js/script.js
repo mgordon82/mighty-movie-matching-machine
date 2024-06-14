@@ -360,7 +360,7 @@ function updateUpNextSection(movie) {
   );
   const movieElement = document.createElement('li');
   // Creating elements and using bulma for styling for now.
-  movieElement.classList.add('column', 'is-one-half', `movie-${movie.imdbID}`);
+  movieElement.classList.add('column', 'is-half', `movie-${movie.imdbID}`);
   movieElement.innerHTML = `    
     <div class="card">
                 <div class="card-content movie-card1">
