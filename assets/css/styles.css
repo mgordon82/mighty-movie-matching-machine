@@ -259,3 +259,9 @@ a:focus {
     border-right: none;
   }
 }
+
+.image img {
+  height: 150px;
+  width: 100px;
+  display: block;
+}
