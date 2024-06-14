@@ -4,6 +4,93 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mighty Movie Matching Machine (4M)</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
-  <body></body>
+  <body class="theme-dark">
+    <header>
+      <section class="hero is-small header-target">
+        <div class="hero-body">
+          <div class="columns is-vcentered">
+            <div class="column">
+              <p class="title">Mighty Movie Matching Machine (4M)</p>
+            </div>
+            <div class="column is-narrow">
+              <div class="field has-addons">
+                <div class="control">
+                  <input
+                    id="search-bar"
+                    class="input"
+                    type="text"
+                    placeholder="Match a movie..."
+                  />
+                </div>
+                <div class="control">
+                  <button
+                    id="search-button"
+                    class="js-modal-trigger"
+                    data-target="modal-js-search"
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+    <main>
+      <section id="up-next-section" class="section">
+        <div class="container up-next-container">
+          <h2 class="title is-4">Up Next</h2>
+          <div
+            class="columns is-align-items-start is-multiline is-flex-wrap-nowrap up-next-scroll"
+          ></div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-half">
+              <section id="favorites" class="box favorites-box">
+                <h2 class="title is-4">Your Favorites</h2>
+                <ul class="card-list"></ul>
+              </section>
+            </div>
+            <div class="column is-half">
+              <section id="watch-history" class="box watch-history-box">
+                <h2 class="title is-4">Watch History</h2>
+                <ul class="card-list"></ul>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div id="chuckNorrisDialog" class="custom-dialog" style="display: none">
+        <div class="custom-dialog-content">
+          <p id="jokeDisplay">Press the Konami Code for a Chuck Norris joke!</p>
+        </div>
+      </div>
+    </main>
+    <script src="assets/js/script.js"></script>
+    <div id="modal-js-search" class="modal">
+      <div class="modal-card">
+        <div class="modal-background"></div>
+
+        <header
+          class="modal-card-head modal-card-head-override is-justify-content-space-between"
+        >
+          <h3 class="modal-card-title" id="numOfResults"></h3>
+          <button class="delete is-large is-dark" aria-label="close"></button>
+        </header>
+        <div class="box modal-box-content" id="modalContent">
+          <div id="search-results"></div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

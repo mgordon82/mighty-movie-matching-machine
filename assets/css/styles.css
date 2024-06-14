@@ -1,0 +1,396 @@
+:root {
+  /* Coolors color variables */
+  --ghost-white: #f7f7ffff;
+  --jonquil: #f9c80eff;
+  --rich-black: #00171fff;
+  --red-cmyk: #ee2e31ff;
+  --davys-gray: #50514fff;
+
+  /* Coolors gradients */
+  --gradient-top: linear-gradient(
+    0deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-right: linear-gradient(
+    90deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-bottom: linear-gradient(
+    180deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-left: linear-gradient(
+    270deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-top-right: linear-gradient(
+    45deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-bottom-right: linear-gradient(
+    135deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-top-left: linear-gradient(
+    225deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-bottom-left: linear-gradient(
+    315deg,
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-radial: radial-gradient(
+    var(--ghost-white),
+    var(--jonquil),
+    var(--rich-black),
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-ghost-white-jonquil: linear-gradient(
+    180deg,
+    var(--ghost-white),
+    var(--jonquil)
+  );
+  --gradient-ghost-white-rich-black: linear-gradient(
+    0deg,
+    var(--ghost-white),
+    var(--rich-black)
+  );
+  --gradient-ghost-white-red-cmyk: linear-gradient(
+    330deg,
+    var(--ghost-white),
+    var(--red-cmyk)
+  );
+  --gradient-white-red: linear-gradient(
+    315deg,
+    var(--ghost-white),
+    var(--red-cmyk)
+  );
+  --gradient-ghost-white-davys-gray: linear-gradient(
+    0deg,
+    var(--ghost-white),
+    var(--davys-gray)
+  );
+  --gradient-jonquil-rich-black: linear-gradient(
+    0deg,
+    var(--jonquil),
+    var(--rich-black)
+  );
+  --gradient-jonquil-red-cmyk: linear-gradient(
+    180deg,
+    var(--jonquil),
+    var(--red-cmyk)
+  );
+  --gradient-jonquil-davys-gray: linear-gradient(
+    180deg,
+    var(--jonquil),
+    var(--davys-gray)
+  );
+  --gradient-rich-black-red-cmyk: linear-gradient(
+    180deg,
+    var(--rich-black),
+    var(--red-cmyk)
+  );
+  --gradient-rich-black-davys-gray: linear-gradient(
+    180deg,
+    var(--rich-black),
+    var(--davys-gray)
+  );
+  --gradient-reverse: linear-gradient(
+    0deg,
+    var(--rich-black),
+    var(--davys-gray)
+  );
+  --gradient-red-cmyk-davys-gray: linear-gradient(
+    180deg,
+    var(--red-cmyk),
+    var(--davys-gray)
+  );
+  --gradient-red-gray-black: linear-gradient(
+    0deg,
+    var(--red-cmyk),
+    var(--davys-gray),
+    var(--rich-black)
+  );
+}
+
+html {
+  min-height: 100%; /* Set to have gradient go entire length, versus height:100% which doesn't work. */
+  background-image: var(--gradient-rich-black-red-cmyk);
+}
+
+/* Main content takes full height viewport */
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#search-bar {
+  vertical-align: middle;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  border: 2px solid var(--jonquil);
+}
+
+#search-bar:focus {
+  outline: none; /* Remove default bulma outline */
+  box-shadow: 0 0 10px 3px var(--red-cmyk); /* Add red glow outline */
+}
+
+.header-target {
+  background-image: var(--gradient-red-gray-black);
+  color: var(--ghost-white);
+  position: relative;
+}
+
+/* border at bottom of header */
+.header-target::after {
+  content: ''; /* Need this to make it appear */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px; /* thickness of the border */
+  background: var(--gradient-jonquil-davys-gray);
+}
+
+.up-next-container {
+  background-image: var(--gradient-rich-black-davys-gray);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0);
+  height: 430px;
+  .up-next-scroll {
+    overflow-x: auto;
+  }
+}
+
+.card {
+  background-color: rgba(80, 81, 79, 0.4); /* Semi-transparent background */
+}
+
+.card-footer-item {
+  color: var(--ghost-white);
+}
+
+.card-footer-item:hover {
+  text-shadow: 1px 1px 1px var(--jonquil);
+}
+
+.card-footer-item:active {
+  text-shadow: 2px 2px 2px var(--red-cmyk);
+}
+
+.title {
+  color: var(--ghost-white);
+  text-shadow: 2px 2px 4px var(--rich-black);
+}
+
+#search-button {
+  margin-bottom: 0;
+  vertical-align: middle;
+  box-sizing: border-box;
+  background-color: var(--red-cmyk);
+  color: var(--ghost-white);
+  border: 2px solid var(--jonquil);
+  padding: 8.9999% 1rem;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-image 0.3s ease;
+}
+
+#search-button:hover {
+  filter: brightness(90%);
+}
+
+#search-button:active {
+  box-shadow: 0 0 10px 3px var(--red-cmyk); /* Red glow on click */
+}
+
+/* All custom dialog for SUPER SECRET API */
+/* Positioning and size */
+.custom-dialog {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none; /* Hiding like Genji */
+}
+
+.custom-dialog-content {
+  color: var(--ghost-white);
+  text-shadow: 1px 1px 1px var(--davys-gray);
+  background-image: var(--gradient-rich-black-red-cmyk);
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid var(--red-cmyk);
+  box-shadow: 0 0 10px 3px var(--red-cmyk);
+  width: 80%;
+  max-width: 500px;
+}
+
+.close-dialog {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--davys-gray);
+  cursor: pointer;
+}
+
+.close-dialog:hover {
+  color: var(--red-cmyk);
+}
+
+#up-next .card-content {
+  background-image: var(--gradient-reverse);
+  color: var(--ghost-white);
+  box-shadow: 0 4px 8px var(--rich-black);
+  border: 2px solid var(--jonquil);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+}
+
+#up-next .card-content .title {
+  color: var(--red-cmyk);
+  text-shadow: 1px 1px 1px var(--rich-black);
+}
+
+a {
+  color: var(--jonquil);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--jonquil);
+  text-shadow: 1px 1px 1px var(--ghost-white);
+  text-decoration: underline;
+}
+
+.watch-history-box,
+.favorites-box {
+  background-image: var(--gradient-rich-black-davys-gray);
+  box-shadow: 0 4px 8px var(--rich-black);
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  img {
+    height: 25px;
+  }
+  .card-content-override {
+    padding: 0;
+  }
+}
+
+.favorite-card,
+.history-card {
+  background-image: var(--gradient-reverse);
+  color: var(--ghost-white);
+  box-shadow: 0 4px 8px var(--rich-black);
+  border: 2px solid var(--jonquil);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.card-footer {
+  border-top: 2px solid var(--jonquil);
+}
+
+.card-footer-item {
+  border-left: 2px solid var(--jonquil);
+}
+
+.card-footer-item:first-child {
+  border-left: none;
+}
+
+.card-footer-item img {
+  width: 25px;
+  height: auto;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+.upnext-image {
+  height: 150px;
+}
+
+.description {
+  overflow-y: auto;
+  max-height: 75px;
+  font-size: 0.8em;
+}
+
+.streaming-list-header {
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+
+.streaming-list {
+  li {
+    display: inline-block;
+    border-right: 1px solid #ccc;
+    padding: 0 10px;
+  }
+  li:last-child {
+    border-right: none;
+  }
+}
+
+.modal-actions {
+  img {
+    height: 25px;
+    margin-right: 5px;
+  }
+}
+
+.modal-card-head-override {
+  padding: 10px 15px;
+}
+
+.modal-box-content {
+  overflow-y: auto;
+  max-height: 600px;
+}
