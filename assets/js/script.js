@@ -240,6 +240,10 @@ function displaySearchResults(results) {
 // modal functionality
 
 document.addEventListener('DOMContentLoaded', () => {
+  loadUpNextFromStorage();
+  loadFavoritesFromStorage();
+  loadWatchedFromStorage();
+
   const chuckNorrisDialog = document.getElementById('chuckNorrisDialog');
   const jokeDisplay = document.getElementById('jokeDisplay');
 
@@ -354,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // The next three are kind of redundant, but couldn't make it work as only one function
 function updateUpNextSection(movie) {
-  // We're targetting the up-next-container and adding our movie to it
+  // We're targeting the up-next-container and adding our movie to it
   const sectionContainer = document.querySelector(
     '#up-next-section .up-next-container .columns'
   );
@@ -387,21 +391,21 @@ function updateUpNextSection(movie) {
                     <h4 class="streaming-list-header">
                       Stream on these platforms
                     </h4>
-                    <ul class="streaming-list" id="streamingList">
+                    <ul class="streaming-list" id="streamingList-${movie.imdbID}">
                       <li><a target="_blank" href="#">Apple TV</a></li>
                       <li><a target="_blank" href="#">Hulu</a></li>
                     </ul>
                   </div>
                 </div>
                 <footer class="card-footer">
-                  <button class="card-footer-item" id="favorite">
+                  <button class="card-footer-item favorite-button">
                     <img
                       src="./assets/img/favorite.png"
                       alt="favorite icon"
                     />
                     Favorite
                   </button>
-                  <button class="card-footer-item" id="watched">
+                  <button class="card-footer-item watched-button">
                     <img
                       src="./assets/img/watched.png"
                       alt="watched icon"
@@ -409,7 +413,7 @@ function updateUpNextSection(movie) {
                     />
                     Watched
                   </button>
-                  <button class="card-footer-item" id="remove">
+                  <button class="card-footer-item remove-button">
                     <img
                       src="./assets/img/delete.png"
                       alt="remove icon"
@@ -422,21 +426,23 @@ function updateUpNextSection(movie) {
   `;
   sectionContainer.appendChild(movieElement);
 
-  // Adding event listeners to buttons
-  movieElement
-    .querySelector('.favorite-button')
-    .addEventListener('click', function () {
+  // Adding event listeners to buttons after the element is appended
+  const favoriteButton = movieElement.querySelector('.favorite-button');
+  if (favoriteButton) {
+    favoriteButton.addEventListener('click', function () {
       addToFavorites(movie);
     });
+  }
 
-  /* I thought the watched button deserved special funcitonality inside Up Next, logically it
-    should funciton as both a watched button and a removed button, so that's what it does.
-  */
-  movieElement
-    .querySelector('.watched-button')
-    .addEventListener('click', function () {
+  // I thought the watched button deserved special functionality inside Up Next, logically it
+  // should function as both a watched button and a removed button, so that's what it does.
+  const watchedButton = movieElement.querySelector('.watched-button');
+  if (watchedButton) {
+    watchedButton.addEventListener('click', function () {
       // Checks if the movie is already in the watched list
-      let isWatched = watched.some((m) => m.imdbID === movie.imdbID);
+      let isWatched = watched.some(function (m) {
+        return m.imdbID === movie.imdbID;
+      });
 
       // If the movie is not in the watched list, add it
       if (!isWatched) {
@@ -446,16 +452,18 @@ function updateUpNextSection(movie) {
       // Remove the movie from the up next list
       removeFromUpNext(movie);
     });
+  }
 
-  movieElement
-    .querySelector('.remove-button')
-    .addEventListener('click', function () {
+  const removeButton = movieElement.querySelector('.remove-button');
+  if (removeButton) {
+    removeButton.addEventListener('click', function () {
       removeFromUpNext(movie);
     });
+  }
 }
 
 function updateFavoritesSection(movie) {
-  // Same thing here, we're targetting favorites and adding a new li with our movies
+  // Same thing here, we're targeting favorites and adding a new li with our movies
   const sectionContainer = document.querySelector('#favorites .card-list');
   const movieElement = document.createElement('li');
   movieElement.classList.add('card', 'favorite-card', `movie-${movie.imdbID}`);
@@ -466,21 +474,21 @@ function updateFavoritesSection(movie) {
             <p class="title is-5">${movie.Title}</p>
         </div>
         <div class="column has-text-right is-one-quarter">
-            <button id="upnext">
+            <button class="button up-next-button">
             <img
                 src="./assets/img/bookmark.png"
                 alt="up-next icon"
                 class="icon-fixed-size"
             />
             </button>
-            <button id="watched">
+            <button class="button watched-button">
             <img
                 src="./assets/img/watched.png"
                 alt="watched icon"
                 class="icon-fixed-size"
             />
             </button>
-            <button id="remove">
+            <button class="button remove-button">
             <img
                 src="./assets/img/delete.png"
                 alt="remove icon"
@@ -493,25 +501,29 @@ function updateFavoritesSection(movie) {
   `;
   sectionContainer.appendChild(movieElement);
 
-  // Same deal, adding event listeners to the buttons
-  movieElement
-    .querySelector('.up-next-button')
-    .addEventListener('click', function () {
+  // Adding event listeners to buttons after the element is appended
+  const upNextButton = movieElement.querySelector('.up-next-button');
+  if (upNextButton) {
+    upNextButton.addEventListener('click', function () {
       addToUpNext(movie);
     });
+  }
 
-  movieElement
-    .querySelector('.watched-button')
-    .addEventListener('click', function () {
+  const watchedButton = movieElement.querySelector('.watched-button');
+  if (watchedButton) {
+    watchedButton.addEventListener('click', function () {
       addToWatched(movie);
     });
+  }
 
-  movieElement
-    .querySelector('.remove-button')
-    .addEventListener('click', function () {
+  const removeButton = movieElement.querySelector('.remove-button');
+  if (removeButton) {
+    removeButton.addEventListener('click', function () {
       removeFromFavorites(movie);
     });
+  }
 }
+
 
 function updateWatchHistorySection(movie) {
   // Same as last two, but for watch history
@@ -525,21 +537,21 @@ function updateWatchHistorySection(movie) {
       <p class="title is-5">${movie.Title}</p>
   </div>
   <div class="column has-text-right is-one-quarter">
-      <button id="upnext">
+      <button class="button up-next-button">
       <img
           src="./assets/img/bookmark.png"
           alt="up-next icon"
           class="icon-fixed-size"
       />
       </button>
-      <button id="favorite">
+      <button class="button favorite-button">
       <img
           src="./assets/img/favorite.png"
           alt="favorite icon"
           class="icon-fixed-size"
       />
       </button>
-      <button id="remove">
+      <button class="button remove-button">
       <img
           src="./assets/img/delete.png"
           alt="remove icon"
@@ -552,25 +564,29 @@ function updateWatchHistorySection(movie) {
   `;
   sectionContainer.appendChild(movieElement);
 
-  // Add event listeners for buttons
-  movieElement
-    .querySelector('.favorite-button')
-    .addEventListener('click', function () {
-      addToFavorites(movie);
-    });
-
-  movieElement
-    .querySelector('.up-next-button')
-    .addEventListener('click', function () {
+  // Add event listeners for buttons after the element is appended
+  const upNextButton = movieElement.querySelector('.up-next-button');
+  if (upNextButton) {
+    upNextButton.addEventListener('click', function () {
       addToUpNext(movie);
     });
+  }
 
-  movieElement
-    .querySelector('.remove-button')
-    .addEventListener('click', function () {
+  const favoriteButton = movieElement.querySelector('.favorite-button');
+  if (favoriteButton) {
+    favoriteButton.addEventListener('click', function () {
+      addToFavorites(movie);
+    });
+  }
+
+  const removeButton = movieElement.querySelector('.remove-button');
+  if (removeButton) {
+    removeButton.addEventListener('click', function () {
       removeFromWatched(movie);
     });
+  }
 }
+
 
 // Functionality for remove button for Upnext
 function removeFromUpNext(movie) {
@@ -610,3 +626,25 @@ function removeFromWatched(movie) {
   const movieElement = sectionContainer.querySelector('.movie-' + movie.imdbID);
   sectionContainer.removeChild(movieElement);
 }
+
+function loadUpNextFromStorage() {
+  const upNext = JSON.parse(localStorage.getItem('upNext')) || [];
+  upNext.forEach(function (movie) {
+    updateUpNextSection(movie);
+  });
+}
+
+function loadFavoritesFromStorage() {
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+  favorites.forEach(function (movie) {
+    updateFavoritesSection(movie);
+  });
+}
+
+function loadWatchedFromStorage() {
+  const watched = JSON.parse(localStorage.getItem('watched')) || [];
+  watched.forEach(function (movie) {
+    updateWatchHistorySection(movie);
+  });
+}
+
