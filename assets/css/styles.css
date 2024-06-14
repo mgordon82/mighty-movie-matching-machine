@@ -192,6 +192,10 @@ main {
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0);
+  height: 430px;
+  .up-next-scroll {
+    overflow-x: auto;
+  }
 }
 
 .card {
@@ -350,7 +354,7 @@ a:focus {
 }
 
 .upnext-image {
-  width: 100px;
+  height: 150px;
 }
 
 .description {
