@@ -385,3 +385,8 @@ a:focus {
 .modal-card-head-override {
   padding: 10px 15px;
 }
+
+.modal-box-content {
+  overflow-y: auto;
+  max-height: 600px;
+}
