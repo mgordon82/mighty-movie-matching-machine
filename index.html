@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mighty Movie Matching Machine (4M)</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body class="theme-dark">
@@ -18,10 +21,19 @@
             <div class="column is-narrow">
               <div class="field has-addons">
                 <div class="control">
-                  <input id="search-bar" class="input" type="text" placeholder="Match a movie..."/>
+                  <input
+                    id="search-bar"
+                    class="input"
+                    type="text"
+                    placeholder="Match a movie..."
+                  />
                 </div>
                 <div class="control">
-                  <button id="search-button" class="js-modal-trigger" data-target="modal-js-search">
+                  <button
+                    id="search-button"
+                    class="js-modal-trigger"
+                    data-target="modal-js-search"
+                  >
                     Search
                   </button>
                 </div>
@@ -39,55 +51,123 @@
             <div class="column is-one-half">
               <div class="card">
                 <div class="card-content movie-card1">
-                    <div class="columns flex-wrap">
-                        <div class="column is-one-quarter">
-                          <img src="./assets/img/image-placeholder.png" class="upnext-image" alt="placeholder" />
-                        </div>
-                        <div class="column">
-                            <p class="title is-5">Movie 1</p>
-                            <div class="description">Here is the description of the movie. This is a kick-arse movie that does cool tricks, but not as cool as Chuck Norris. Now if we were to be as good as Chuck Norris, we would implode immediately and cease to exist. No one can be as good as him.</div>
-                        </div> 
+                  <div class="columns flex-wrap">
+                    <div class="column is-one-quarter">
+                      <img
+                        src="./assets/img/image-placeholder.png"
+                        class="upnext-image"
+                        alt="placeholder"
+                      />
                     </div>
-                    <div class="is-full">
-                        <h4 class="streaming-list-header">Stream on these platforms</h4>
-                        <ul class="streaming-list" id="streamingList">
-                            <li><a target="_blank" href="#">Apple TV</a></li>
-                            <li><a target="_blank" href="#">Hulu</a></li>
-                        </ul>
-                    </div> 
+                    <div class="column">
+                      <p class="title is-5">Movie 1</p>
+                      <div class="description">
+                        Here is the description of the movie. This is a
+                        kick-arse movie that does cool tricks, but not as cool
+                        as Chuck Norris. Now if we were to be as good as Chuck
+                        Norris, we would implode immediately and cease to exist.
+                        No one can be as good as him.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="is-full">
+                    <h4 class="streaming-list-header">
+                      Stream on these platforms
+                    </h4>
+                    <ul class="streaming-list" id="streamingList">
+                      <li><a target="_blank" href="#">Apple TV</a></li>
+                      <li><a target="_blank" href="#">Hulu</a></li>
+                    </ul>
+                  </div>
                 </div>
                 <footer class="card-footer">
-                    <button class="card-footer-item" id='favorite'>
-                        <img src="./assets/img/favorite.png" alt="favorite icon" class="icon-fixed-size" />
-                        Favorite
-                    </button>
-                    <button class="card-footer-item" id='watched'>
-                        <img src="./assets/img/watched.png" alt="watched icon" class="icon-fixed-size" />
-                        Watched
-                    </button>
-                    <button class="card-footer-item" id='remove'>
-                        <img src="./assets/img/delete.png" alt="remove icon" class="icon-fixed-size" />
-                        Remove
-                    </button>
-                  </footer>
+                  <button class="card-footer-item" id="favorite">
+                    <img
+                      src="./assets/img/favorite.png"
+                      alt="favorite icon"
+                      class="icon-fixed-size"
+                    />
+                    Favorite
+                  </button>
+                  <button class="card-footer-item" id="watched">
+                    <img
+                      src="./assets/img/watched.png"
+                      alt="watched icon"
+                      class="icon-fixed-size"
+                    />
+                    Watched
+                  </button>
+                  <button class="card-footer-item" id="remove">
+                    <img
+                      src="./assets/img/delete.png"
+                      alt="remove icon"
+                      class="icon-fixed-size"
+                    />
+                    Remove
+                  </button>
+                </footer>
               </div>
             </div>
-            <!-- I wanna remove these, but I'm leaving them here for formatting atm 6/12/24 -->
-            <div class="column is-half">
+            <div class="column is-one-half">
               <div class="card">
-                <div class="card-content movie-card3">
-                  <p class="title is-5">Movie 3</p>
+                <div class="card-content movie-card1">
+                  <div class="columns flex-wrap">
+                    <div class="column is-one-quarter">
+                      <img
+                        src="./assets/img/image-placeholder.png"
+                        class="upnext-image"
+                        alt="placeholder"
+                      />
+                    </div>
+                    <div class="column">
+                      <p class="title is-5">Movie 1</p>
+                      <div class="description">
+                        Here is the description of the movie. This is a
+                        kick-arse movie that does cool tricks, but not as cool
+                        as Chuck Norris. Now if we were to be as good as Chuck
+                        Norris, we would implode immediately and cease to exist.
+                        No one can be as good as him.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="is-full">
+                    <h4 class="streaming-list-header">
+                      Stream on these platforms
+                    </h4>
+                    <ul class="streaming-list" id="streamingList">
+                      <li><a target="_blank" href="#">Apple TV</a></li>
+                      <li><a target="_blank" href="#">Hulu</a></li>
+                    </ul>
+                  </div>
                 </div>
+                <footer class="card-footer">
+                  <button class="card-footer-item" id="favorite">
+                    <img
+                      src="./assets/img/favorite.png"
+                      alt="favorite icon"
+                      class="icon-fixed-size"
+                    />
+                    Favorite
+                  </button>
+                  <button class="card-footer-item" id="watched">
+                    <img
+                      src="./assets/img/watched.png"
+                      alt="watched icon"
+                      class="icon-fixed-size"
+                    />
+                    Watched
+                  </button>
+                  <button class="card-footer-item" id="remove">
+                    <img
+                      src="./assets/img/delete.png"
+                      alt="remove icon"
+                      class="icon-fixed-size"
+                    />
+                    Remove
+                  </button>
+                </footer>
               </div>
             </div>
-            <div class="column is-half">
-              <div class="card">
-                <div class="card-content movie-card4">
-                  <p class="title is-5">Movie 4</p>
-                </div>
-              </div>
-            </div>
-            
           </div>
         </div>
       </section>
@@ -100,24 +180,36 @@
                 <ul class="card-list">
                   <li class="card favorite-card">
                     <div class="card-content card-content-override">
-                        <div class="columns is-justify-content-space-between">
-                            <div class="column">
-                              <!-- Leaving one sample card here for formatting reference -->
-                                <p class="title is-5">Movie 1</p> 
-                            </div>
-                            <div class="column has-text-right is-one-quarter">
-                                <button id='favorite'>
-                                    <img src="./assets/img/bookmark.png" alt="upnext icon" class="icon-fixed-size"/>                                    
-                                </button>
-                                <button id='watched'>
-                                    <img src="./assets/img/watched.png" alt="watched icon" class="icon-fixed-size"/>                                    
-                                </button>
-                                <button id='remove'>
-                                    <img src="./assets/img/delete.png" alt="remove icon" class="icon-fixed-size"/>                                    
-                                </button>
-                            </div>
-                        </div>                                                                       
-                    </div>                    
+                      <div class="columns is-justify-content-space-between">
+                        <div class="column">
+                          <!-- Leaving one sample card here for formatting reference -->
+                          <p class="title is-5">Movie 1</p>
+                        </div>
+                        <div class="column has-text-right is-one-quarter">
+                          <button id="favorite">
+                            <img
+                              src="./assets/img/bookmark.png"
+                              alt="upnext icon"
+                              class="icon-fixed-size"
+                            />
+                          </button>
+                          <button id="watched">
+                            <img
+                              src="./assets/img/watched.png"
+                              alt="watched icon"
+                              class="icon-fixed-size"
+                            />
+                          </button>
+                          <button id="remove">
+                            <img
+                              src="./assets/img/delete.png"
+                              alt="remove icon"
+                              class="icon-fixed-size"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </li>
                 </ul>
               </section>
@@ -129,23 +221,35 @@
                   <li class="card history-card">
                     <!-- Leaving one sample card here for formatting reference -->
                     <div class="card-content card-content-override">
-                        <div class="columns is-justify-content-space-between">
-                            <div class="column">
-                                <p class="title is-5">Movie 1</p> 
-                            </div>
-                            <div class="column has-text-right is-one-quarter">                                
-                                <button id='watched'>
-                                    <img src="./assets/img/bookmark.png" alt="bookmark icon" class="icon-fixed-size"/>                                    
-                                </button>
-                                <button id='favorite'>
-                                  <img src="./assets/img/favorite.png" alt="favorite icon" class="icon-fixed-size"/>                                    
-                              </button>
-                                <button id='remove'>
-                                    <img src="./assets/img/delete.png" alt="remove icon" class="icon-fixed-size"/>                                    
-                                </button>
-                            </div>
-                        </div>                                                                       
-                    </div> 
+                      <div class="columns is-justify-content-space-between">
+                        <div class="column">
+                          <p class="title is-5">Movie 1</p>
+                        </div>
+                        <div class="column has-text-right is-one-quarter">
+                          <button id="watched">
+                            <img
+                              src="./assets/img/bookmark.png"
+                              alt="bookmark icon"
+                              class="icon-fixed-size"
+                            />
+                          </button>
+                          <button id="favorite">
+                            <img
+                              src="./assets/img/favorite.png"
+                              alt="favorite icon"
+                              class="icon-fixed-size"
+                            />
+                          </button>
+                          <button id="remove">
+                            <img
+                              src="./assets/img/delete.png"
+                              alt="remove icon"
+                              class="icon-fixed-size"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </li>
                 </ul>
               </section>
@@ -153,22 +257,22 @@
           </div>
         </div>
       </section>
-      <div id="chuckNorrisDialog" class="custom-dialog" style="display:none;">
+      <div id="chuckNorrisDialog" class="custom-dialog" style="display: none">
         <div class="custom-dialog-content">
           <p id="jokeDisplay">Press the Konami Code for a Chuck Norris joke!</p>
         </div>
-      </div>      
-    </main>
-  <script src="assets/js/script.js"></script>
-  <div id="modal-js-search" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <div class="box" id="modalContent">
-        <p id="numOfResults"></p>
-        <div id="search-results"></div>
       </div>
+    </main>
+    <script src="assets/js/script.js"></script>
+    <div id="modal-js-search" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="box" id="modalContent">
+          <p id="numOfResults"></p>
+          <div id="search-results"></div>
+        </div>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-  </div>
-</body>
+  </body>
 </html>
