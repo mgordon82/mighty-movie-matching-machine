@@ -262,7 +262,6 @@ main {
   box-shadow: 0 0 10px 3px var(--red-cmyk);
   width: 80%;
   max-width: 500px;
-  text-align: center;
 }
 
 .close-dialog {
@@ -287,7 +286,6 @@ main {
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
-  text-align: center;
 }
 
 #up-next .card-content .title {
