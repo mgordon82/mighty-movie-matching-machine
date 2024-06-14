@@ -160,9 +160,9 @@ function addToUpNext(movie) {
 }
 
 function displaySearchResults(results) {
-  const p = document.getElementById('numOfResults');
-  p.textContent = `Showing ${results.length} Result(s)`;
-  p.setAttribute('class', 'my-4');
+  const h3 = document.getElementById('numOfResults');
+  h3.textContent = `Showing ${results.length} Result(s)`;
+  h3.setAttribute('class', 'my-2 is-size-3');
   const modalContent = document.getElementById('search-results');
   modalContent.innerHTML = ''; // clears past search results
   // checks if 'results' exists and if the fetch actually returns results

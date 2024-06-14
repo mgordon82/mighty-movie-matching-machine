@@ -374,3 +374,14 @@ a:focus {
     border-right: none;
   }
 }
+
+.modal-actions {
+  img {
+    height: 25px;
+    margin-right: 5px;
+  }
+}
+
+.modal-card-head-override {
+  padding: 10px 15px;
+}

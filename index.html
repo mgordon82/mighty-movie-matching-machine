@@ -76,14 +76,20 @@
     </main>
     <script src="assets/js/script.js"></script>
     <div id="modal-js-search" class="modal">
-      <div class="modal-background"></div>
-      <div class="modal-content">
+      <div class="modal-card">
+        <div class="modal-background"></div>
+
+        <header
+          class="modal-card-head modal-card-head-override is-justify-content-space-between"
+        >
+          <h3 class="modal-card-title" id="numOfResults"></h3>
+          <button class="delete is-large is-dark" aria-label="close"></button>
+        </header>
         <div class="box" id="modalContent">
-          <p id="numOfResults"></p>
           <div id="search-results"></div>
         </div>
       </div>
-      <button class="modal-close is-large" aria-label="close"></button>
+      <!-- <button class="modal-close is-large" aria-label="close"></button> -->
     </div>
   </body>
 </html>
