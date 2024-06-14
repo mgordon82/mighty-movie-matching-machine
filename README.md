@@ -12,6 +12,18 @@ In the Up Next list, more details about those movies will show descriptions and 
 
 Search for a movie of your choice and an api call will happen. It will display a list of results. User chooses an action on their movie selection. The choice will then add that to an array in localStorage to be accessed via each section. The second API is triggered in the Up Next section where it takes that selected movie and gets the list of streaming services.
 
+### URLs
+
+[GitHub Repo](https://github.com/mgordon82/mighty-movie-matching-machine)
+
+[GitHub Pages](https://mgordon82.github.io/mighty-movie-matching-machine/)
+
+### Screen Captures
+
+![Mighty Movie Matching Machine full view](./assets/img/screenshot.png)
+
+![Movie Results Modal](./assets/img/modal.png)
+
 ## Contributors
 
 James
