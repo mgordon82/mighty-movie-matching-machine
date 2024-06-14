@@ -473,7 +473,7 @@ function updateFavoritesSection(movie) {
         <div class="column">                          
             <p class="title is-5">${movie.Title}</p>
         </div>
-        <div class="column has-text-right is-one-quarter">
+        <div class="column has-text-right is-half">
             <button class="button up-next-button">
             <img
                 src="./assets/img/bookmark.png"
@@ -524,7 +524,6 @@ function updateFavoritesSection(movie) {
   }
 }
 
-
 function updateWatchHistorySection(movie) {
   // Same as last two, but for watch history
   const sectionContainer = document.querySelector('#watch-history .card-list');
@@ -536,7 +535,7 @@ function updateWatchHistorySection(movie) {
   <div class="column">                          
       <p class="title is-5">${movie.Title}</p>
   </div>
-  <div class="column has-text-right is-one-quarter">
+  <div class="column has-text-right is-half">
       <button class="button up-next-button">
       <img
           src="./assets/img/bookmark.png"
@@ -586,7 +585,6 @@ function updateWatchHistorySection(movie) {
     });
   }
 }
-
 
 // Functionality for remove button for Upnext
 function removeFromUpNext(movie) {
@@ -647,4 +645,3 @@ function loadWatchedFromStorage() {
     updateWatchHistorySection(movie);
   });
 }
-
