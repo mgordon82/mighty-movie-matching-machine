@@ -361,27 +361,64 @@ function updateUpNextSection(movie) {
   const movieElement = document.createElement('li');
   // Creating elements and using bulma for styling for now.
   movieElement.classList.add('column', 'is-one-half', `movie-${movie.imdbID}`);
-  movieElement.innerHTML = `
+  movieElement.innerHTML = `    
     <div class="card">
-      <div class="card-content">
-        <figure class="image">
-          <img src="${movie.Poster}" alt="${movie.Title}">
-        </figure>
-        <p class="title is-5">${movie.Title}</p>
-        <button class="button are-small favorite-button">
-          <img src="./assets/img/favorite.png" alt="favorite icon" />
-          Favorite
-        </button>
-        <button class="button are-small watched-button">
-          <img src="./assets/img/watched.png" alt="watched icon" />
-          Watched
-        </button>
-        <button class="button are-small remove-button">
-          <img src="./assets/img/delete.png" alt="remove icon" />
-          Remove
-        </button>
-      </div>
-    </div>
+                <div class="card-content movie-card1">
+                  <div class="columns flex-wrap">
+                    <div class="column is-one-quarter">
+                      <img
+                        src='${movie.Poster}'
+                        class="upnext-image"
+                        alt="${movie.Title}"
+                      />
+                    </div>
+                    <div class="column">
+                      <p class="title is-5">${movie.Title}</p>
+                      <div class="description">
+                        Here is the description of the movie. This is a
+                        kick-arse movie that does cool tricks, but not as cool
+                        as Chuck Norris. Now if we were to be as good as Chuck
+                        Norris, we would implode immediately and cease to exist.
+                        No one can be as good as him.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="is-full">
+                    <h4 class="streaming-list-header">
+                      Stream on these platforms
+                    </h4>
+                    <ul class="streaming-list" id="streamingList">
+                      <li><a target="_blank" href="#">Apple TV</a></li>
+                      <li><a target="_blank" href="#">Hulu</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <footer class="card-footer">
+                  <button class="card-footer-item" id="favorite">
+                    <img
+                      src="./assets/img/favorite.png"
+                      alt="favorite icon"
+                    />
+                    Favorite
+                  </button>
+                  <button class="card-footer-item" id="watched">
+                    <img
+                      src="./assets/img/watched.png"
+                      alt="watched icon"
+                      class="icon-fixed-size"
+                    />
+                    Watched
+                  </button>
+                  <button class="card-footer-item" id="remove">
+                    <img
+                      src="./assets/img/delete.png"
+                      alt="remove icon"
+                      class="icon-fixed-size"
+                    />
+                    Remove
+                  </button>
+                </footer>
+              </div>
   `;
   sectionContainer.appendChild(movieElement);
 
