@@ -313,6 +313,12 @@ a:focus {
   box-shadow: 0 4px 8px var(--rich-black);
   border: 2px solid rgba(0, 0, 0, 0.4);
   border-radius: 8px;
+  img {
+    height: 25px;
+  }
+  .card-content-override {
+    padding: 0;
+  }
 }
 
 .favorite-card,

@@ -459,24 +459,36 @@ function updateFavoritesSection(movie) {
   const sectionContainer = document.querySelector('#favorites .card-list');
   const movieElement = document.createElement('li');
   movieElement.classList.add('card', 'favorite-card', `movie-${movie.imdbID}`);
-  movieElement.innerHTML = `
-    <div class="card-content">
-      <figure class="image">
-        <img src="${movie.Poster}" alt="${movie.Title}">
-      </figure>
-      <p class="title is-5">${movie.Title}</p>
-      <button class="button are-small up-next-button">
-        <img src="./assets/img/bookmark.png" alt="bookmark icon" />    
-        UpNext
-      </button>
-      <button class="button are-small watched-button">
-        <img src="./assets/img/watched.png" alt="watched icon" />
-        Watched
-      </button>
-      <button class="button are-small remove-button">
-        <img src="./assets/img/delete.png" alt="remove icon" />
-        Remove
-      </button>
+  movieElement.innerHTML = `    
+    <div class="card-content card-content-override">
+        <div class="columns is-justify-content-space-between">
+        <div class="column">                          
+            <p class="title is-5">${movie.Title}</p>
+        </div>
+        <div class="column has-text-right is-one-quarter">
+            <button id="favorite">
+            <img
+                src="./assets/img/bookmark.png"
+                alt="upnext icon"
+                class="icon-fixed-size"
+            />
+            </button>
+            <button id="watched">
+            <img
+                src="./assets/img/watched.png"
+                alt="watched icon"
+                class="icon-fixed-size"
+            />
+            </button>
+            <button id="remove">
+            <img
+                src="./assets/img/delete.png"
+                alt="remove icon"
+                class="icon-fixed-size"
+            />
+            </button>
+        </div>
+        </div>
     </div>
   `;
   sectionContainer.appendChild(movieElement);
