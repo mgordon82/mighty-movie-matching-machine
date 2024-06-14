@@ -466,10 +466,10 @@ function updateFavoritesSection(movie) {
             <p class="title is-5">${movie.Title}</p>
         </div>
         <div class="column has-text-right is-one-quarter">
-            <button id="favorite">
+            <button id="upnext">
             <img
                 src="./assets/img/bookmark.png"
-                alt="upnext icon"
+                alt="up-next icon"
                 class="icon-fixed-size"
             />
             </button>
