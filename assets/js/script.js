@@ -88,6 +88,7 @@ function getStreamingService(id) {
       });
       movieData = filteredData;
       console.log('movie data', movieData);
+      displayStreamingServices(movieData);
     });
 }
 
@@ -151,11 +152,30 @@ function addToUpNext(movie) {
     upNext.push(movie);
     localStorage.setItem('upNext', JSON.stringify(upNext));
     console.log(`${movie.Title} added to up-next list.`);
-    getMovieId(movie.Title);
+    // getMovieId(movie.Title);
     // fixed targetting to up-next-section
     updateUpNextSection(movie);
   } else {
     console.log(`${movie.Title} is already in your up-next list.`);
+  }
+}
+
+function displayStreamingServices(services) {
+  const header = document.getElementById('num-of-services');
+  header.textContent = `${services.length} streaming service(s) found!`;
+  header.setAttribute('class', 'my-2 is-size-3');
+  const servicesModalContent = document.getElementById('streaming-services');
+  servicesModalContent.innerHTML = '';
+  if (services && services.length > 0) {
+    for (let i = 0; i < services.length; i++) {
+      const service = services[i];
+      const serviceElement = document.createElement('li');
+      serviceElement.setAttribute('class', 'columns card has-background-info-dark my-4');
+      serviceElement.innerHTML = `<a href ="${services[i].web_url}">${services[i].name}`;
+      servicesModalContent.appendChild(serviceElement)
+    }
+    const servicesModal = document.getElementById('modal-streaming-services');
+    servicesModal.classList.add('is-active');
   }
 }
 
@@ -388,12 +408,8 @@ function updateUpNextSection(movie) {
                     </div>
                   </div>
                   <div class="is-full">
-                    <h4 class="streaming-list-header">
-                      Stream on these platforms
-                    </h4>
                     <ul class="streaming-list" id="streamingList-${movie.imdbID}">
-                      <li><a target="_blank" href="#">Apple TV</a></li>
-                      <li><a target="_blank" href="#">Hulu</a></li>
+                      <li onclick="getMovieId('${movie.Title}')"><a href="#">Streaming Services</a></li>
                     </ul>
                   </div>
                 </div>
@@ -645,3 +661,17 @@ function loadWatchedFromStorage() {
     updateWatchHistorySection(movie);
   });
 }
+
+// getMovieId(movie.Title);
+//   for(let i = 0; i < streamingArray.length; i++) {
+//     document.getElementById(`streamingList-${movie.imdbID}`).appendChild(streamingArray[i]);
+//   }
+//   streamingArray = [];
+
+// for (let i = 0; i < movieData.length; i++) {
+//   const streamingLi = document.createElement('li');
+//   streamingLi.innerHTML = `
+//     <li><a target="_blank" href="${movieData[i].web_url}">${movieData[i].name}</a></li>
+//   `;
+// streamingArray.push(streamingLi);
+// }
