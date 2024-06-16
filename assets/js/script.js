@@ -31,7 +31,6 @@ function exactSearchResults(imdbId) {
     .then(function (data) {
       console.log(data);
       console.log(data.Title);
-      // movieUpdate.textContent = data.Title;
     });
 }
 
@@ -661,17 +660,3 @@ function loadWatchedFromStorage() {
     updateWatchHistorySection(movie);
   });
 }
-
-// getMovieId(movie.Title);
-//   for(let i = 0; i < streamingArray.length; i++) {
-//     document.getElementById(`streamingList-${movie.imdbID}`).appendChild(streamingArray[i]);
-//   }
-//   streamingArray = [];
-
-// for (let i = 0; i < movieData.length; i++) {
-//   const streamingLi = document.createElement('li');
-//   streamingLi.innerHTML = `
-//     <li><a target="_blank" href="${movieData[i].web_url}">${movieData[i].name}</a></li>
-//   `;
-// streamingArray.push(streamingLi);
-// }
