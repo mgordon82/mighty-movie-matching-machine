@@ -23,18 +23,6 @@ function getSearchResults(title) {
     });
 }
 
-function exactSearchResults(imdbId) {
-  fetch(`https://www.omdbapi.com/?apikey=${omdbKey}&i=${imdbId}&type=movie`)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      console.log(data.Title);
-      // movieUpdate.textContent = data.Title;
-    });
-}
-
 searchBtn.addEventListener('click', function () {
   if (searchInput.value !== '') {
     console.log('input value', searchInput.value);
@@ -87,7 +75,7 @@ function getStreamingService(id) {
         return false;
       });
       movieData = filteredData;
-      console.log('movie data', movieData);
+      displayStreamingServices(movieData);
     });
 }
 
@@ -139,23 +127,55 @@ function addToWatched(movie) {
 }
 
 function addToUpNext(movie) {
+  console.log('movie', movie);
   let isUpNext = false;
-  for (let i = 0; i < upNext.length; i++) {
-    if (upNext[i].imdbID === movie.imdbID) {
-      isUpNext = true;
-      break;
-    }
-  }
+  fetch(
+    `https://www.omdbapi.com/?apikey=${omdbKey}&i=${movie.imdbID}&type=movie`
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log('details', data);
+      for (let i = 0; i < upNext.length; i++) {
+        if (upNext[i].imdbID === movie.imdbID) {
+          isUpNext = true;
+          break;
+        }
+      }
 
-  if (!isUpNext) {
-    upNext.push(movie);
-    localStorage.setItem('upNext', JSON.stringify(upNext));
-    console.log(`${movie.Title} added to up-next list.`);
-    getMovieId(movie.Title);
-    // fixed targetting to up-next-section
-    updateUpNextSection(movie);
-  } else {
-    console.log(`${movie.Title} is already in your up-next list.`);
+      if (!isUpNext) {
+        upNext.push(data);
+        localStorage.setItem('upNext', JSON.stringify(upNext));
+        console.log(`${data.Title} added to up-next list.`);
+        // getMovieId(movie.Title);
+        // fixed targetting to up-next-section
+        updateUpNextSection(data);
+      } else {
+        console.log(`${data.Title} is already in your up-next list.`);
+      }
+    });
+}
+
+function displayStreamingServices(services) {
+  const header = document.getElementById('num-of-services');
+  header.textContent = `${services.length} streaming service(s) found!`;
+  header.setAttribute('class', 'my-2 is-size-3');
+  const servicesModalContent = document.getElementById('streaming-services');
+  servicesModalContent.innerHTML = '';
+  if (services && services.length > 0) {
+    for (let i = 0; i < services.length; i++) {
+      const service = services[i];
+      const serviceElement = document.createElement('li');
+      serviceElement.setAttribute(
+        'class',
+        'columns card has-background-info-dark my-4 px-3'
+      );
+      serviceElement.innerHTML = `<a href ="${services[i].web_url}" target="_blank">${services[i].name}`;
+      servicesModalContent.appendChild(serviceElement);
+    }
+    const servicesModal = document.getElementById('modal-streaming-services');
+    servicesModal.classList.add('is-active');
   }
 }
 
@@ -377,23 +397,16 @@ function updateUpNextSection(movie) {
                       />
                     </div>
                     <div class="column">
-                      <p class="title is-5">${movie.Title}</p>
+                      <p class="title is-5">${movie.Title} (${movie.Rated})</p>
                       <div class="description">
-                        Here is the description of the movie. This is a
-                        kick-arse movie that does cool tricks, but not as cool
-                        as Chuck Norris. Now if we were to be as good as Chuck
-                        Norris, we would implode immediately and cease to exist.
-                        No one can be as good as him.
+                       ${movie.Plot}
                       </div>
+                      <p class="description">Year: ${movie.Year} -- Runtime: ${movie.Runtime} </p>
                     </div>
                   </div>
                   <div class="is-full">
-                    <h4 class="streaming-list-header">
-                      Stream on these platforms
-                    </h4>
                     <ul class="streaming-list" id="streamingList-${movie.imdbID}">
-                      <li><a target="_blank" href="#">Apple TV</a></li>
-                      <li><a target="_blank" href="#">Hulu</a></li>
+                      <li onclick="getMovieId('${movie.Title}')"><a href="#">Streaming Services</a></li>
                     </ul>
                   </div>
                 </div>
