@@ -14,7 +14,6 @@ function getSearchResults(title) {
       return response.json();
     })
     .then(function (data) {
-      console.log('results', data);
       if (data.Search) {
         displaySearchResults(data.Search);
       } else {
@@ -25,7 +24,6 @@ function getSearchResults(title) {
 
 searchBtn.addEventListener('click', function () {
   if (searchInput.value !== '') {
-    console.log('input value', searchInput.value);
     getSearchResults(searchInput.value);
   }
 });
@@ -66,7 +64,6 @@ function getMovieId(value) {
       return response.json();
     })
     .then(function (data) {
-      console.log('WatchMode search results', data);
       if (data.title_results && data.title_results.length > 0) {
         getStreamingService(data.title_results[0].id);
       } else {
@@ -92,7 +89,6 @@ function getStreamingService(id) {
       return response.json();
     })
     .then(function (data) {
-      console.log('WatchMode streaming services data', data);
       const unique = {};
       const filteredData = data.filter((item) => {
         if (!unique[item.source_id]) {
@@ -108,7 +104,7 @@ function getStreamingService(id) {
       } else {
         displayNoStreamingService();
       }
-    })
+    });
 }
 
 function addToFavorites(movie) {
@@ -159,7 +155,6 @@ function addToWatched(movie) {
 }
 
 function addToUpNext(movie) {
-  console.log('movie', movie);
   let isUpNext = false;
   fetch(
     `https://www.omdbapi.com/?apikey=${omdbKey}&i=${movie.imdbID}&type=movie`
@@ -168,7 +163,6 @@ function addToUpNext(movie) {
       return response.json();
     })
     .then(function (data) {
-      console.log('details', data);
       for (let i = 0; i < upNext.length; i++) {
         if (upNext[i].imdbID === movie.imdbID) {
           isUpNext = true;
@@ -180,7 +174,7 @@ function addToUpNext(movie) {
         upNext.push(data);
         localStorage.setItem('upNext', JSON.stringify(upNext));
         console.log(`${data.Title} added to up-next list.`);
-        // getMovieId(movie.Title);
+
         // fixed targetting to up-next-section
         updateUpNextSection(data);
       } else {
@@ -195,15 +189,17 @@ function displayStreamingServices(services) {
   header.setAttribute('class', 'my-2 is-size-3');
   const servicesModalContent = document.getElementById('streaming-services');
   servicesModalContent.innerHTML = '';
+  const noStreamingServicesContent = document.getElementById(
+    'no-streaming-services-content'
+  );
+  // hide the no streaming services message, damn bugs
+  noStreamingServicesContent.style.display = 'none';
   if (services && services.length > 0) {
     for (let i = 0; i < services.length; i++) {
       const service = services[i];
       const serviceElement = document.createElement('li');
-      serviceElement.setAttribute(
-        'class',
-        'columns card my-4 px-3'
-      );
-      serviceElement.innerHTML = `<a href ="${services[i].web_url}" target="_blank">${services[i].name}`;
+      serviceElement.setAttribute('class', 'columns card my-4 px-3');
+      serviceElement.innerHTML = `<a href ="${service.web_url}" target="_blank">${service.name}</a>`;
       servicesModalContent.appendChild(serviceElement);
     }
     const servicesModal = document.getElementById('modal-streaming-services');
@@ -216,11 +212,13 @@ function displaySearchResults(results) {
   h3.textContent = `Showing ${results.length} Result(s)`;
   h3.setAttribute('class', 'my-2 is-size-3');
   const modalContent = document.getElementById('search-results');
-  modalContent.innerHTML = ''; 
+  modalContent.innerHTML = '';
 
   if (results && results.length > 0) {
     results.forEach((movie) => {
-      fetch(`https://www.omdbapi.com/?apikey=${omdbKey}&i=${movie.imdbID}&type=movie`)
+      fetch(
+        `https://www.omdbapi.com/?apikey=${omdbKey}&i=${movie.imdbID}&type=movie`
+      )
         .then((response) => response.json())
         .then((data) => {
           const movieElement = document.createElement('section');
@@ -259,7 +257,9 @@ function displaySearchResults(results) {
           modalContent.appendChild(movieElement);
 
           // adds event listener to favorite button
-          const favoriteButton = document.getElementById(`${data.imdbID}Favorite`);
+          const favoriteButton = document.getElementById(
+            `${data.imdbID}Favorite`
+          );
           favoriteButton.addEventListener('click', function () {
             addToFavorites(data);
           });
@@ -271,7 +271,9 @@ function displaySearchResults(results) {
           });
 
           // adds event listener to watched button
-          const watchedButton = document.getElementById(`${data.imdbID}Watched`);
+          const watchedButton = document.getElementById(
+            `${data.imdbID}Watched`
+          );
           watchedButton.addEventListener('click', function () {
             addToWatched(data);
           });
@@ -287,9 +289,6 @@ function displaySearchResults(results) {
       });
   }
 }
-
-
-
 
 // modal functionality
 
@@ -697,11 +696,13 @@ function displayNoStreamingService() {
   const header = document.getElementById('num-of-services');
   header.textContent = 'No streaming services found!';
   header.setAttribute('class', 'my-2 is-size-3');
-  
-  const servicesModalContent = document.getElementById('streaming-services');
-  servicesModalContent.innerHTML = ''; 
 
-  const noStreamingServicesContent = document.getElementById('no-streaming-services-content');
+  const servicesModalContent = document.getElementById('streaming-services');
+  servicesModalContent.innerHTML = '';
+
+  const noStreamingServicesContent = document.getElementById(
+    'no-streaming-services-content'
+  );
   noStreamingServicesContent.style.display = 'block';
 
   const servicesModal = document.getElementById('modal-streaming-services');

@@ -357,3 +357,11 @@ p.movie-info strong {
   font-size: large;
   text-align: center;
 }
+
+/* For mobile devices, allow the up-next container to grow based on its contents */
+@media (max-width: 768px) {
+  .up-next-container {
+    height: auto; 
+  }
+}
+
