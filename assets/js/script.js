@@ -92,7 +92,7 @@ function getStreamingService(id) {
       return response.json();
     })
     .then(function (data) {
-      console.log('WatchMode streaming services data', data);
+      console.log('Debug show me data:', data);
       const unique = {};
       const filteredData = data.filter((item) => {
         if (!unique[item.source_id]) {
@@ -194,16 +194,16 @@ function displayStreamingServices(services) {
   header.textContent = `${services.length} streaming service(s) found!`;
   header.setAttribute('class', 'my-2 is-size-3');
   const servicesModalContent = document.getElementById('streaming-services');
-  servicesModalContent.innerHTML = '';
+  servicesModalContent.innerHTML = ''; 
+  const noStreamingServicesContent = document.getElementById('no-streaming-services-content');
+  // hide the no streaming services message, damn bugs
+  noStreamingServicesContent.style.display = 'none'; 
   if (services && services.length > 0) {
     for (let i = 0; i < services.length; i++) {
       const service = services[i];
       const serviceElement = document.createElement('li');
-      serviceElement.setAttribute(
-        'class',
-        'columns card my-4 px-3'
-      );
-      serviceElement.innerHTML = `<a href ="${services[i].web_url}" target="_blank">${services[i].name}`;
+      serviceElement.setAttribute('class', 'columns card my-4 px-3');
+      serviceElement.innerHTML = `<a href ="${service.web_url}" target="_blank">${service.name}</a>`;
       servicesModalContent.appendChild(serviceElement);
     }
     const servicesModal = document.getElementById('modal-streaming-services');
