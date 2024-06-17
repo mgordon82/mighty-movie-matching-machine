@@ -53,6 +53,32 @@ function getMovieId(value) {
     });
 }
 
+function getMovieId(value) {
+  fetch(
+    `https://api.watchmode.com/v1/search/?apiKey=${watchModeApiKey}&search_field=name&search_value=${value}&types=movie`,
+    {
+      method: 'GET',
+      credentials: 'same-origin',
+      redirect: 'follow',
+    }
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log('WatchMode search results', data);
+      if (data.title_results && data.title_results.length > 0) {
+        getStreamingService(data.title_results[0].id);
+      } else {
+        displayNoStreamingService();
+      }
+    })
+    .catch(function (error) {
+      console.error('Error fetching movie ID:', error);
+      displayNoStreamingService();
+    });
+}
+
 function getStreamingService(id) {
   fetch(
     `https://api.watchmode.com/v1/title/${id}/sources/?apiKey=${watchModeApiKey}&regions=US`,
@@ -66,6 +92,7 @@ function getStreamingService(id) {
       return response.json();
     })
     .then(function (data) {
+      console.log('WatchMode streaming services data', data);
       const unique = {};
       const filteredData = data.filter((item) => {
         if (!unique[item.source_id]) {
@@ -74,9 +101,14 @@ function getStreamingService(id) {
         }
         return false;
       });
-      movieData = filteredData;
-      displayStreamingServices(movieData);
-    });
+
+      if (filteredData.length > 0) {
+        movieData = filteredData;
+        displayStreamingServices(movieData);
+      } else {
+        displayNoStreamingService();
+      }
+    })
 }
 
 function addToFavorites(movie) {
@@ -169,7 +201,7 @@ function displayStreamingServices(services) {
       const serviceElement = document.createElement('li');
       serviceElement.setAttribute(
         'class',
-        'columns card has-background-info-dark my-4 px-3'
+        'columns card my-4 px-3'
       );
       serviceElement.innerHTML = `<a href ="${services[i].web_url}" target="_blank">${services[i].name}`;
       servicesModalContent.appendChild(serviceElement);
@@ -184,78 +216,80 @@ function displaySearchResults(results) {
   h3.textContent = `Showing ${results.length} Result(s)`;
   h3.setAttribute('class', 'my-2 is-size-3');
   const modalContent = document.getElementById('search-results');
-  modalContent.innerHTML = ''; // clears past search results
-  // checks if 'results' exists and if the fetch actually returns results
+  modalContent.innerHTML = ''; 
+
   if (results && results.length > 0) {
-    for (let i = 0; i < results.length; i++) {
-      // stores movie object
-      const movie = results[i];
-      const movieElement = document.createElement('section');
-      movieElement.setAttribute(
-        'class',
-        'columns card has-background-info-dark my-4'
-      );
-      movieElement.innerHTML = `
-        <div class='column is-one-quarter'>
-            <figure class="image">
-                <img src="${movie.Poster}" alt="${movie.Title}">
-            </figure>
-        </div>
-        <div class='column'>
-            <div>
-                <p><strong>${movie.Title}</strong> (${movie.Year})</p>
+    results.forEach((movie) => {
+      fetch(`https://www.omdbapi.com/?apikey=${omdbKey}&i=${movie.imdbID}&type=movie`)
+        .then((response) => response.json())
+        .then((data) => {
+          const movieElement = document.createElement('section');
+          movieElement.setAttribute(
+            'class',
+            'columns card has-background-info-dark my-4'
+          );
+          movieElement.innerHTML = `
+            <div class="column is-one-quarter">
+              <figure class="image">
+                <img src="${data.Poster}" alt="${data.Title}">
+              </figure>
             </div>
-        </div>
-        <div class='column modal-actions'>
-            <button class="button are-small" id='${movie.imdbID}Favorite'>
+            <div class="column">
+              <div>
+                <p class="movie-info"><strong>${data.Title}</strong> (${data.Year})</p>
+                <p class="description">${data.Plot}</p>
+              </div>
+            </div>
+            <div class='column modal-actions'>
+              <button class="button are-small" id='${data.imdbID}Favorite'>
                 <img src="./assets/img/favorite.png" alt="favorite icon" />
                 Favorite
-            </button>
-            <button class="button are-small" id='${movie.imdbID}UpNext'>
+              </button>
+              <button class="button are-small" id='${data.imdbID}UpNext'>
                 <img src="./assets/img/bookmark.png" alt="bookmark icon" />    
                 Up Next
-            </button>
-            <button class="button are-small" id='${movie.imdbID}Watched'>
+              </button>
+              <button class="button are-small" id='${data.imdbID}Watched'>
                 <img src="./assets/img/watched.png" alt="watched icon" />
                 Watched
-            </button>
-        </div>
-      `;
+              </button>
+            </div>
+          `;
 
-      modalContent.appendChild(movieElement);
+          modalContent.appendChild(movieElement);
 
-      // adds even listener to favorite button
+          // adds event listener to favorite button
+          const favoriteButton = document.getElementById(`${data.imdbID}Favorite`);
+          favoriteButton.addEventListener('click', function () {
+            addToFavorites(data);
+          });
 
-      const favoriteButton = document.getElementById(`${movie.imdbID}Favorite`);
-      favoriteButton.addEventListener('click', function () {
-        addToFavorites(movie);
-      });
+          // adds event listener to up-next button
+          const upNextButton = document.getElementById(`${data.imdbID}UpNext`);
+          upNextButton.addEventListener('click', function () {
+            addToUpNext(data);
+          });
 
-      // adds event listener to up-next button
-
-      const upNextButton = document.getElementById(`${movie.imdbID}UpNext`);
-      upNextButton.addEventListener('click', function () {
-        addToUpNext(movie);
-      });
-
-      // adds event listener to watched button
-
-      const watchedButton = document.getElementById(`${movie.imdbID}Watched`);
-      watchedButton.addEventListener('click', function () {
-        addToWatched(movie);
-      });
-    }
+          // adds event listener to watched button
+          const watchedButton = document.getElementById(`${data.imdbID}Watched`);
+          watchedButton.addEventListener('click', function () {
+            addToWatched(data);
+          });
+        });
+    });
   } else {
     fetch('https://api.chucknorris.io/jokes/random')
       .then((response) => response.json())
       .then((data) => {
-        const modalContent = document.getElementById('search-results');
         const noResultEl = document.createElement('p');
         noResultEl.textContent = `No results were found for your search, but here is a Chuck Norris joke instead: ${data.value}`;
         modalContent.appendChild(noResultEl);
       });
   }
 }
+
+
+
 
 // modal functionality
 
@@ -657,4 +691,19 @@ function loadWatchedFromStorage() {
   watched.forEach(function (movie) {
     updateWatchHistorySection(movie);
   });
+}
+
+function displayNoStreamingService() {
+  const header = document.getElementById('num-of-services');
+  header.textContent = 'No streaming services found!';
+  header.setAttribute('class', 'my-2 is-size-3');
+  
+  const servicesModalContent = document.getElementById('streaming-services');
+  servicesModalContent.innerHTML = ''; 
+
+  const noStreamingServicesContent = document.getElementById('no-streaming-services-content');
+  noStreamingServicesContent.style.display = 'block';
+
+  const servicesModal = document.getElementById('modal-streaming-services');
+  servicesModal.classList.add('is-active');
 }

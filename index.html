@@ -95,15 +95,17 @@
     <div id="modal-streaming-services" class="modal">
       <div class="modal-card">
         <div class="modal-background"></div>
-
         <header
           class="modal-card-head modal-card-head-override is-justify-content-space-between"
         >
           <h3 class="modal-card-title" id="num-of-services"></h3>
-          <button class="delete is-large is-dark" aria-label="close"></button>
+          <button class="delete is-large" aria-label="close"></button>
         </header>
         <div class="box modal-box-content" id="streaming-service-content">
           <ul id="streaming-services"></ul>
+          <div id="no-streaming-services-content" style="display: none;">
+            <p>No streaming services available for this title.</p>
+          </div>
         </div>
       </div>
     </div>
