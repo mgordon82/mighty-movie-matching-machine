@@ -7,143 +7,28 @@
   --davys-gray: #50514fff;
 
   /* Coolors gradients */
-  --gradient-top: linear-gradient(
-    0deg,
-    var(--ghost-white),
-    var(--jonquil),
-    var(--rich-black),
-    var(--red-cmyk),
-    var(--davys-gray)
-  );
-  --gradient-right: linear-gradient(
-    90deg,
-    var(--ghost-white),
-    var(--jonquil),
-    var(--rich-black),
-    var(--red-cmyk),
-    var(--davys-gray)
-  );
-  --gradient-bottom: linear-gradient(
-    180deg,
-    var(--ghost-white),
-    var(--jonquil),
-    var(--rich-black),
-    var(--red-cmyk),
-    var(--davys-gray)
-  );
-  --gradient-left: linear-gradient(
-    270deg,
-    var(--ghost-white),
-    var(--jonquil),
-    var(--rich-black),
-    var(--red-cmyk),
-    var(--davys-gray)
-  );
-  --gradient-top-right: linear-gradient(
-    45deg,
-    var(--ghost-white),
-    var(--jonquil),
-    var(--rich-black),
-    var(--red-cmyk),
-    var(--davys-gray)
-  );
-  --gradient-bottom-right: linear-gradient(
-    135deg,
-    var(--ghost-white),
-    var(--jonquil),
-    var(--rich-black),
-    var(--red-cmyk),
-    var(--davys-gray)
-  );
-  --gradient-top-left: linear-gradient(
-    225deg,
-    var(--ghost-white),
-    var(--jonquil),
-    var(--rich-black),
-    var(--red-cmyk),
-    var(--davys-gray)
-  );
-  --gradient-bottom-left: linear-gradient(
-    315deg,
-    var(--ghost-white),
-    var(--jonquil),
-    var(--rich-black),
-    var(--red-cmyk),
-    var(--davys-gray)
-  );
-  --gradient-radial: radial-gradient(
-    var(--ghost-white),
-    var(--jonquil),
-    var(--rich-black),
-    var(--red-cmyk),
-    var(--davys-gray)
-  );
-  --gradient-ghost-white-jonquil: linear-gradient(
-    180deg,
-    var(--ghost-white),
-    var(--jonquil)
-  );
-  --gradient-ghost-white-rich-black: linear-gradient(
-    0deg,
-    var(--ghost-white),
-    var(--rich-black)
-  );
-  --gradient-ghost-white-red-cmyk: linear-gradient(
-    330deg,
-    var(--ghost-white),
-    var(--red-cmyk)
-  );
-  --gradient-white-red: linear-gradient(
-    315deg,
-    var(--ghost-white),
-    var(--red-cmyk)
-  );
-  --gradient-ghost-white-davys-gray: linear-gradient(
-    0deg,
-    var(--ghost-white),
-    var(--davys-gray)
-  );
-  --gradient-jonquil-rich-black: linear-gradient(
-    0deg,
-    var(--jonquil),
-    var(--rich-black)
-  );
-  --gradient-jonquil-red-cmyk: linear-gradient(
-    180deg,
-    var(--jonquil),
-    var(--red-cmyk)
-  );
-  --gradient-jonquil-davys-gray: linear-gradient(
-    180deg,
-    var(--jonquil),
-    var(--davys-gray)
-  );
-  --gradient-rich-black-red-cmyk: linear-gradient(
-    180deg,
-    var(--rich-black),
-    var(--red-cmyk)
-  );
-  --gradient-rich-black-davys-gray: linear-gradient(
-    180deg,
-    var(--rich-black),
-    var(--davys-gray)
-  );
-  --gradient-reverse: linear-gradient(
-    0deg,
-    var(--rich-black),
-    var(--davys-gray)
-  );
-  --gradient-red-cmyk-davys-gray: linear-gradient(
-    180deg,
-    var(--red-cmyk),
-    var(--davys-gray)
-  );
-  --gradient-red-gray-black: linear-gradient(
-    0deg,
-    var(--red-cmyk),
-    var(--davys-gray),
-    var(--rich-black)
-  );
+  --gradient-top: linear-gradient(0deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
+  --gradient-right: linear-gradient(90deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
+  --gradient-bottom: linear-gradient(180deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
+  --gradient-left: linear-gradient(270deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
+  --gradient-top-right: linear-gradient(45deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
+  --gradient-bottom-right: linear-gradient(135deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
+  --gradient-top-left: linear-gradient(225deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
+  --gradient-bottom-left: linear-gradient(315deg, var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
+  --gradient-radial: radial-gradient(var(--ghost-white), var(--jonquil), var(--rich-black), var(--red-cmyk), var(--davys-gray));
+  --gradient-ghost-white-jonquil: linear-gradient(180deg, var(--ghost-white), var(--jonquil));
+  --gradient-ghost-white-rich-black: linear-gradient(0deg, var(--ghost-white), var(--rich-black));
+  --gradient-ghost-white-red-cmyk: linear-gradient(330deg, var(--ghost-white), var(--red-cmyk));
+  --gradient-white-red: linear-gradient(315deg, var(--ghost-white), var(--red-cmyk));
+  --gradient-ghost-white-davys-gray: linear-gradient(0deg, var(--ghost-white), var(--davys-gray));
+  --gradient-jonquil-rich-black: linear-gradient(0deg, var(--jonquil), var(--rich-black));
+  --gradient-jonquil-red-cmyk: linear-gradient(180deg, var(--jonquil), var(--red-cmyk));
+  --gradient-jonquil-davys-gray: linear-gradient(180deg, var(--jonquil), var(--davys-gray));
+  --gradient-rich-black-red-cmyk: linear-gradient(180deg, var(--rich-black), var(--red-cmyk));
+  --gradient-rich-black-davys-gray: linear-gradient(180deg, var(--rich-black), var(--davys-gray));
+  --gradient-reverse: linear-gradient(0deg, var(--rich-black), var(--davys-gray));
+  --gradient-red-cmyk-davys-gray: linear-gradient(180deg, var(--red-cmyk), var(--davys-gray));
+  --gradient-red-gray-black: linear-gradient(0deg, var(--red-cmyk), var(--davys-gray), var(--rich-black));
 }
 
 html {
@@ -393,4 +278,82 @@ a:focus {
 .modal-box-content {
   overflow-y: auto;
   max-height: 600px;
+  background-image: var(--gradient-reverse);
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 0.75rem !important;
+  border-bottom-right-radius: 0.75rem !important;
+}
+
+#no-streaming-services-content {
+  background-image: var(--gradient-rich-black-davys-gray);
+  color: var(--ghost-white) !important;
+  box-shadow: 0 4px 8px var(--rich-black) !important;
+  border: 1px solid var(--davys-gray) !important;
+  border-radius: 10px !important;
+  padding: 20px !important;
+  margin: 10px !important;
+  text-align: center !important;
+}
+
+.modal-card-head {
+  background-image: var(--gradient-reverse) !important; 
+  color: var(--ghost-white) !important; 
+  border-bottom: 2px solid var(--jonquil) !important; 
+  padding: 10px 15px !important;
+}
+
+.modal-card-foot {
+  background-color: var(--ghost-white) !important; 
+  color: var(--rich-black) !important; 
+  border-top: 2px solid var(--jonquil) !important; 
+  padding: 10px 15px !important;
+}
+
+.modal-background {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+p.movie-info strong {
+  color: white !important;
+}
+
+
+#search-results section {
+  background-image: var(--gradient-red-gray-black);
+  color: var(--ghost-white);
+  box-shadow: 0 4px 8px var(--rich-black);
+  border: 1px solid var(--jonquil);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+}
+
+#search-results section .movie-info {
+  color: var(--jonquil) !important;
+  text-shadow: 1px 1px 1px var(--rich-black);
+}
+
+#search-results section .description {
+  overflow-y: auto;
+  max-height: 75px;
+  font-size: 0.8em;
+}
+
+#search-results section .modal-actions {
+  img {
+    height: 25px;
+    margin-right: 5px;
+  }
+}
+
+.modal-actions .button {
+  background-image: var(--gradient-reverse);
+}
+
+#streaming-services li {
+  display: block;
+  background-image: var(--gradient-reverse);
+  font-size: large;
+  text-align: center;
 }
