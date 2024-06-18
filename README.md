@@ -26,6 +26,11 @@ Search for a movie of your choice and an api call will happen. It will display a
 
 ![Movie Results Modal](./assets/img/modal.png)
 
+## References
+[WatchMode API](https://api.watchmode.com/)
+
+[OMDB API](https://www.omdbapi.com/)
+
 ## Contributors
 
 James
